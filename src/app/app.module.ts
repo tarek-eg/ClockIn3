@@ -8,14 +8,16 @@ import { UsersModule } from './users/users.module';
 import { ClockComponent } from './clock/clock.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
-import { UsersService } from './users.service';
+import { UsersService } from './shared/users.service';
+import { DatePipeComponent } from './shared/date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClockComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    DatePipeComponent
   ],
   imports: [
     BrowserModule,

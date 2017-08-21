@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipeComponent } from '../shared/date.pipe';
 
 @Component({
   selector: 'app-clock',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClockComponent implements OnInit {
 
+    today: number = Date.now();
   constructor() { }
 
   ngOnInit() {
