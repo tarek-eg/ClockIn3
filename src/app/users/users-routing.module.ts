@@ -5,9 +5,11 @@ import { UserProfileComponent } from './user-profile.component';
 import { AddUserComponent } from './add-user.component';
 
 const routes: Routes = [
-    { path:'users', component: UsersComponent},
+    { path:'users', component: UsersComponent,
+     children:[
+    {path: '', component:AddUserComponent},
+    ]},
     {path: 'users/:id', component:UserProfileComponent},
-    {path: 'add-user', component:AddUserComponent},
     
 ];
 
