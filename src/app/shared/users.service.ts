@@ -33,7 +33,7 @@ export class UsersService {
             {"id": 2, "name": "Khaled Jamal", "gender": "Male"},
             {"id": 3, "name": "Mahmoud Sloma", "gender": "Male"},
             {"id": 4, "name": "Osama Nour", "gender": "Male"},
-            {"id": 5, "name": "Amani Harb", "gender": "Female"}
+            {"id": 5, "name": "Amany mhmd", "gender": "Female"}
           ]
   // }
   // }

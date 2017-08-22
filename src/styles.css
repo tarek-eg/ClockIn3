@@ -21,14 +21,15 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+.greeting{
+  padding-top: 20px;
+}
 h2, h3 {
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
-body {
-  margin: 2em;
-}
+
 body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
@@ -54,7 +55,22 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
+.nav-left>div>a {
+ padding-left: 60px;
 
+}
+.nav-left>div:hover {
+
+ background-color: black;
+}
+.nav-left>div:hover a {
+
+color: white;
+}
+
+.nav-left{
+  margin-top: 30px;
+}
 /* Navigation link styles */
 nav a {
   padding: 5px 10px;
@@ -62,24 +78,48 @@ nav a {
   margin-right: 10px;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
+ font-size: 16px;
   border-radius: 4px;
+  text-decoration: none;
 }
 nav a:visited, a:link {
-  color: #607D8B;
+color:lightslategrey;
+text-decoration: none;
 }
 nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+  color:white;
+text-decoration: none;
 }
 nav a.active {
-  color: #039be5;
+  color:white;
+  text-decoration: none;
 }
 
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.copm-back{
+  background-color: white;
+  padding: 30px;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  margin: 50px;
+}
+
+.comp-margin{
+text-align: center;
+height: 60vh;
+}
+
+
+.t-item>tr>td {
+padding: 8px;
+}
+
+
+
 
 
 /*

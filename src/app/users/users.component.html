@@ -1,9 +1,26 @@
 <br>
 <br>
-<ul class="items">
-      <li *ngFor= "let user of users"
-      (click)="onSelect(user)">
-          <span class="badge">{{ user.id }}</span>
-          {{ user.name }}
-      </li>
-    </ul>
+<div class="copm-back" style="height: 60vh;">
+
+    <table  style=" margin-top: 10px;">
+      <thead></thead>
+<tbody class="t-item">
+  <tr *ngFor= "let user of users"  (click)="onSelect(user)">
+    <td> <label><input type="checkbox"  class=""></label> </td>
+      <td >
+        <div>
+            <span><span class="glyphicon glyphicon-user" style="color:cornflowerblue;padding-right: 11px;"></span></span>  {{ user.name }}
+        </div>
+    </td>
+
+     <td >  9:29 am</td>
+
+     <td >   11:35 am</td>
+
+     <td>  2hours,6 min</td>
+</tr>
+
+ 
+</tbody>
+</table>
+</div>

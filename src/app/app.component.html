@@ -1,16 +1,21 @@
-      <div  style="background-color:  #000000; color: #FFFFFF"  class="row">
+      
+      <div  class="row">
+      <div class="col-md-2" style="padding-left:0px; padding-right:0px;">
+      <div  style="background-color: #252020 ; color: #FFFFFF ;    height: 100vh;" >
      <p style="font-size: 30px;margin-left: 30px;
     padding-top: 4px;">Clock In</p>
-     </div>
-
-     
-       <nav>
-      <a routerLink="/clock" routerLinkActive="active">Clock</a>
-      <a routerLink="/time-sheet" routerLinkActive="active">Time Sheet</a>
-      <a routerLink="/users" routerLinkActive="active">Users</a>
-      <a routerLink="/login" routerLinkActive="active">Login</a>
+         <nav class="nav-left" >
+    <div>  <a routerLink="/clock" routerLinkActive="active">Clock</a></div>
+     <div> <a routerLink="/time-sheet" routerLinkActive="active">Time Sheet</a></div>
+     <div> <a routerLink="/users" routerLinkActive="active">Users</a></div>
+     <div> <a routerLink="/login" routerLinkActive="active">Login</a></div>
     </nav>
+     </div>
+      </div>
+     
+  <div class="col-md-10" style="padding-left:0px; padding-right:0px; background-color: #eee;    height: 100vh;">
+ 
     <router-outlet></router-outlet>
-
-
+  </div>
+   </div>
     
