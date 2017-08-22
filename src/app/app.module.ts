@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { TimeSheetModule } from './time-sheet/time-sheet.module';
@@ -21,6 +22,7 @@ import { DatePipeComponent } from './shared/date.pipe';
   ],
   imports: [
     BrowserModule,
+    NoopAnimationsModule,
     UsersModule,
     TimeSheetModule,
     AppRoutingModule,
