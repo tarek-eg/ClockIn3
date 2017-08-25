@@ -7,7 +7,7 @@ import { AddUserComponent } from './add-user.component';
 const routes: Routes = [
     { path:'users', component: UsersComponent,
      children:[
-    {path: '', component:AddUserComponent},
+    {path: 'add-user', component:AddUserComponent},
     ]},
     {path: 'users/:id', component:UserProfileComponent},
     
