@@ -14,6 +14,11 @@ import { TimeSheetHomeComponent } from './time-sheet-home.component';
     CommonModule,
     TimeSheetRoutingModule
   ],
-  declarations: [TimeSheetComponent, AddShiftComponent, EditShiftComponent, ClockActionComponent, EditShiftBottomComponent, TimeSheetHomeComponent]
+  declarations: [TimeSheetComponent,
+     AddShiftComponent,
+      EditShiftComponent,
+       ClockActionComponent,
+        EditShiftBottomComponent,
+         TimeSheetHomeComponent]
 })
 export class TimeSheetModule { }
