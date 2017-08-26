@@ -8,7 +8,7 @@ import { TimeSheetHomeComponent } from './time-sheet-home.component';
 
 
 const routes: Routes = [
-    {path: '', component: TimeSheetHomeComponent,
+    {path: 'time-sheet', component: TimeSheetHomeComponent,
     children:[
           {path: '', component: TimeSheetComponent},
           {path: 'clock-action', component: ClockActionComponent }

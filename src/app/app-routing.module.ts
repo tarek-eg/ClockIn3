@@ -8,9 +8,9 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
 
   { path: 'clock', component: ClockComponent},
-  { path: 'time-sheet', loadChildren:'app/time-sheet/time-sheet.module#TimeSheetModule'},  
+  // { path: 'time-sheet', loadChildren:'app/time-sheet/time-sheet.module#TimeSheetModule'},  
   { path: 'login', component: LoginComponent},
-  { path: '', component:ClockComponent },
+  { path: '', redirectTo:'/clock', pathMatch: 'full' },
   { path:'**', component: NotFoundComponent}
 ];
 

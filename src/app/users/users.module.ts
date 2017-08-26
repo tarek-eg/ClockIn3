@@ -4,11 +4,12 @@ import { UsersComponent } from './users.component';
 import { UserProfileComponent } from './user-profile.component';
 import { AddUserComponent } from './add-user.component';
 import { UsersRoutingModule } from './users-routing.module';
+import { UsersHomeComponent } from './users-home.component';
 
 @NgModule({
   imports: [
     CommonModule, UsersRoutingModule
   ],
-  declarations: [UsersComponent, UserProfileComponent, AddUserComponent]
+  declarations: [UsersComponent, UserProfileComponent, AddUserComponent, UsersHomeComponent]
 })
 export class UsersModule { }
