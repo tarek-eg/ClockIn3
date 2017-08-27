@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { Http } from '@angular/http';
+import "rxjs/add/operator/map"
 
 export class User{
   constructor(public id: number, public name: string, public gender: string) { }
@@ -19,6 +20,10 @@ export class User{
 
 @Injectable()
 export class UsersService {
+
+    constructor(private _http:Http){
+      
+  }
 
   getUsers(){ {  
 
@@ -41,6 +46,43 @@ export class UsersService {
 
 }
   }
+
+  getTimesheets(){
+    //Khaled Jamal
+    return [
+    {
+        "username": "Tarek Goda", 
+        "date": "2017-08-26", 
+        "timein": "9:29", 
+        "timeout": "11:35", 
+        "total": "2 hours, 6 mins" 
+    }, {
+        "username": "Amani Harb", 
+        "date": "2017-08-26",
+        "timein": "8:11", 
+        "timeout": "12:01", 
+        "total": "4 hours, 22 mins" 
+    },{
+        "username": "Khaled Jamal", 
+        "date": "2017-08-27", 
+        "timein": "9:03", 
+        "timeout": "15:33", 
+        "total": "1 hours, 9 mins" 
+    },{
+        "username": "Osama Nour", 
+        "date": "2017-08-27", 
+        "timein": "7:12", 
+        "timeout": "19:01", 
+        "total": "0 hours, 33 mins" 
+    },{
+        "username": "Mahmoud Slouma", 
+        "date": "2017-08-28",  
+        "timein": "11:11", 
+        "timeout": "13:00", 
+        "total": "8 hours, 1 mins" }
+  
+  ]
+}
 }
   
 

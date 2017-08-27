@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { TimeSheetModule } from './time-sheet/time-sheet.module';
@@ -12,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { UsersService } from './shared/users.service';
 import { DatePipeComponent } from './shared/date.pipe';
 import { MomentModule } from 'angular2-moment';
+import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { MomentModule } from 'angular2-moment';
     ClockComponent,
     NotFoundComponent,
     LoginComponent,
-    DatePipeComponent
+    DatePipeComponent,
+    TopNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { MomentModule } from 'angular2-moment';
     UsersModule,
     TimeSheetModule,
     AppRoutingModule,
-    MomentModule
+    MomentModule,
+    HttpModule,
+    
 
   ],
   providers: [UsersService],

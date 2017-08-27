@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { TimeSheetRoutingModule } from './time-sheet-routing.module';
 import { TimeSheetComponent } from './time-sheet.component';
@@ -8,17 +9,23 @@ import { EditShiftComponent } from './edit-shift.component';
 import { ClockActionComponent } from './clock-action.component';
 import { EditShiftBottomComponent } from './edit-shift-bottom.component';
 import { TimeSheetHomeComponent } from './time-sheet-home.component';
+import { TimeFilterPipe } from './time-filter.pipe';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    TimeSheetRoutingModule
+    TimeSheetRoutingModule,
+    FormsModule
   ],
   declarations: [TimeSheetComponent,
      AddShiftComponent,
       EditShiftComponent,
        ClockActionComponent,
         EditShiftBottomComponent,
-         TimeSheetHomeComponent]
+         TimeSheetHomeComponent,
+         TimeFilterPipe,
+    
+      ]
 })
 export class TimeSheetModule { }

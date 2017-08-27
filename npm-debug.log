@@ -3,7 +3,7 @@
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'start' ]
 2 info using npm@3.10.10
-3 info using node@v6.11.0
+3 info using node@v6.11.2
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle clock-in2@0.0.0~prestart: clock-in2@0.0.0
 6 silly lifecycle clock-in2@0.0.0~prestart: no script for prestart, continuing
@@ -28,7 +28,7 @@
 16 verbose cwd C:\Users\Lordkj\Documents\GitHub\clockin3
 17 error Windows_NT 6.1.7601
 18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
-19 error node v6.11.0
+19 error node v6.11.2
 20 error npm  v3.10.10
 21 error code ELIFECYCLE
 22 error clock-in2@0.0.0 start: `ng serve`
