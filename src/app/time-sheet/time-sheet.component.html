@@ -13,6 +13,16 @@
 
 </div>
 
+<div *ngIf="" class="copm-back">
+  <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms)">
+    <label>username</label> &emsp;&emsp;&emsp;&emsp;
+    From: &emsp; <input> &emsp;&emsp;
+    To: &emsp; <input> &emsp;&emsp;&emsp;&emsp;
+    <button type="submit">Save</button>
+    
+  </form>
+
+</div>
 
 <!-- Large modal -- Khaled Jamal-->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -44,7 +54,7 @@
       <thead></thead>
 <tbody class="t-item" >
 
-  <tr *ngFor="let shift of timesheetsDB | timeFilter: xUser : xDate" data-toggle="modal" data-target=".bs-example-modal-lg">
+  <tr *ngFor="let shift of timesheetsDB | timeFilter: xUser : xDate; let i = index" data-toggle="modal" data-target=".bs-example-modal-lg">
     <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
       <td >
         <div>
@@ -56,7 +66,8 @@
 
      <td>{{ shift.timeout }}</td>
     <!-- <td> {{ shift.date | date: fullDate}} </td> -->
-     <td> {{ shift.total}} </td>
+     <td> {{ shift.total}}</td>
+     <td><button (click)="EditRef(i)">Edit</button> </td>
 </tr>
 <!--
   <tr>

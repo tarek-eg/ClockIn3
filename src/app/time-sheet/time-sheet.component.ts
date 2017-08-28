@@ -13,6 +13,7 @@ export class TimeSheetComponent  {
   timesheetsDB
   xUser
   xDate
+  index
   
 
   constructor(private usersService:UsersService) {
@@ -36,6 +37,14 @@ activateDate(){
 clearAll(){
   this.xDate = null
   this.xUser = "All"
+}
+
+EditRef(index){
+  this.index = index
+}
+
+onSubmit(){
+  
 }
 }
 
