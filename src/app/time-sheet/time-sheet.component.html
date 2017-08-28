@@ -1,3 +1,5 @@
+
+
 <div class="copm-back">
   Filter by User
   <select (click)="activateUser()" [(ngModel)]="xUser"> 
@@ -13,13 +15,13 @@
 
 </div>
 
-<div *ngIf="" class="copm-back">
-  <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms)">
+<div *ngIf="isEditTrue" class="copm-back">
+  <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms.value)">
     <label>username</label> &emsp;&emsp;&emsp;&emsp;
-    From: &emsp; <input> &emsp;&emsp;
-    To: &emsp; <input> &emsp;&emsp;&emsp;&emsp;
-    <button type="submit">Save</button>
-    
+    From: &emsp; <input name="timein" [(ngModel)]="timeIn"> &emsp;&emsp;
+    To: &emsp; <input name="timeout" [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
+    <button type="submit">Save</button>&emsp;
+    <button (click)="onEditCancel()">Cancel</button>
   </form>
 
 </div>
@@ -65,95 +67,13 @@
      <td>{{ shift.timein }}</td>
 
      <td>{{ shift.timeout }}</td>
-    <!-- <td> {{ shift.date | date: fullDate}} </td> -->
+    <td> {{ shift.date | date: fullDate}} </td>
      <td> {{ shift.total}}</td>
-     <td><button (click)="EditRef(i)">Edit</button> </td>
-</tr>
-<!--
-  <tr>
-      <td >
-         <label><input type="checkbox" ></label>
-      </td>
+     <td><button (click)="EditRef(i, shift.timein, shift.timeout)">Edit</button> </td>
+     <td><button>Delete</button> </td>
 
-  <td > 
-     <div >
-          <span > <span class="glyphicon glyphicon-user" style=" color: #0066CC;padding-right: 11px;"></span>
-        </span>
-          Jamal, Khaled
-    </div>
-  </td>
+    </tr>
 
-    <td >  9:29 am</td>
-
-      <td >  <button  class="btn btn-default btn-sm">End Shift</button></td>
-      
-      <td >  2hours,6 min</td>
-
- </tr>
-  <tr > 
-     <td>
-        <label><input type="checkbox" ></label>
-     </td>
-
-  <td > 
-     <div>
-            <span >  <span class="glyphicon glyphicon-user" style=" color: #CC3300; padding-right: 11px;"></span>
-          </span>
-            Mostafa, Tarek
-      </div>
-</td>
-
-      <td >  9:29 am</td>
-
-      <td >   11:35 am</td>
-
-      <td>  2hours,6 min</td>
-
-</tr>
-
-  <tr > 
-      <td>
-           <label><input type="checkbox" ></label>
-      </td>
-
-   <td >
-            <div >
-                  <span >  <span class="glyphicon glyphicon-user" style=" color: #009933; padding-right: 11px;"></span>
-                </span>
-                  Nour, Osama
-          </div>
-   </td>
-
-
-      <td >   9:29 am</td>
-
-      <td i>   11:35 am</td>
-
-      <td >  2hours,6 min</td>
-      
-</tr>
-
-  <tr > 
-        <td>
-            <label><input type="checkbox" ></label>
-      </td>
-
-  <td > 
-        <div >
-            <span > <span class="glyphicon glyphicon-user" style=" color: #666600; padding-right: 8px;"></span>
-          </span>
-            Sloma, Mahmoud
-    </div>
-</td>
-
-      <td>   9:29 am</td>
-
-      <td >   11:35 am</td>
-      
-      <td >  2hours,6 min</td>
-
-</tr>
-    -->
 </tbody>
 </table>
                           
@@ -161,5 +81,15 @@
   </div>
 
 
-  
+<div  class="copm-back">
+<app-add-shift></app-add-shift>
+</div>
+  <div  class="copm-back">
+<app-editshift></app-editshift>
+</div>
+
+
+
     <router-outlet></router-outlet>
+
+    

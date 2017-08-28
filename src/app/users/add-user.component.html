@@ -1,4 +1,23 @@
-Add User works
+<h2>Add User</h2>
+
+<strong>Name & Email</strong><br>
+<p>We will email this user login instructions once you create their account.</p>
+
+<input placeholder="First Name" #fName><br>
+<input placeholder="Last Name" #lName><br>
+<input type="email" placeholder="Email address" #email>
+<br>
+<hr>
+<br>
+<strong>Password</strong><br>
+<p>We'll email the user a link to reset their auto-generated password.</p>
+
+<br>
+<button (click)="addUser(fName.value, lName.value, email.value)">Add User</button>
+
+
+
+<!--
  <div id="mySidenavg" class="sidenavg">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNavigate()">&times;</a>
   <div style="margin: 20px">
@@ -21,6 +40,5 @@ Add User works
               </div>
                 <p>Password</p>
                 <p>we will email the user alink to reset their outo-generated password</p>
-              <!-- <center><button  id="myBtn" class="btn btn-success" style="margin-top: 20px;">Add Shift</button>   </center> -->
 </div>
-  </div>   
+  </div>   -->

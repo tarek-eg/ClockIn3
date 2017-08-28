@@ -1,11 +1,19 @@
-<br>
-<br>
-<div class="copm-back" style="height: 60vh;">
 
-    <table  style=" margin-top: 10px;">
+<div>
+ <section class="copm-back" >
+    <div >
+      <p>
+            <strong>Active</strong>
+      </p>
+
+      <br>
+    </div>
+    <table id="example" class="table table-hover">
       <thead></thead>
-<tbody class="t-item">
-  <tr *ngFor= "let user of users"  (click)="onSelect(user)">
+<tbody class="t-item" >
+
+  <tr *ngFor= "let user of users"  data-toggle="modal" data-target=".bs-example-modal-lg">
+    <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
     <td> <label><input type="checkbox"  class=""></label> </td>
       <td >
         <div>
@@ -13,15 +21,30 @@
         </div>
     </td>
 
-     <td >  9:29 am</td>
+     <td >  {{user.firstname}}</td>
 
-     <td >   11:35 am</td>
+     <td >  {{user.lastname}}</td>
 
-     <td>  2hours,6 min</td>
-</tr>
+     <td >  {{user.jobtitle}}</td>
+          <td >  {{user.email}}</td>
+    <td> <button (click)="deleteUser(user.name)">Delete</button></td>
 
- 
+    </tr>
+
 </tbody>
 </table>
+                          
+</section>
+  </div>
+
+
+
+<div  class="copm-back">
+  <app-add-user></app-add-user>
 </div>
+
+<div  class="copm-back">
+  <app-user-profile></app-user-profile>
+</div>
+
 <router-outlet></router-outlet>

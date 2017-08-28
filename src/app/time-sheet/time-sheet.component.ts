@@ -14,7 +14,9 @@ export class TimeSheetComponent  {
   xUser
   xDate
   index
-  
+  isEditTrue = false
+  timeIn
+  timeOut
 
   constructor(private usersService:UsersService) {
     
@@ -39,12 +41,23 @@ clearAll(){
   this.xUser = "All"
 }
 
-EditRef(index){
+EditRef(index, timein, timeout){
   this.index = index
+  this.timeIn = timein
+  this.timeOut = timeout
+  this.isEditTrue = true
 }
 
-onSubmit(){
-  
+onSubmit(form){
+  console.log(form)
+  this.isEditTrue = false
 }
+onEditCancel(){
+  this.index = null
+  this.timeIn = null
+  this.timeOut = null
+  this.isEditTrue = false
+}
+
 }
 

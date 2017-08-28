@@ -34,11 +34,11 @@ export class UsersService {
     // }
     
           return [ 
-            {"id": 1, "name": "Tarek Mostafa", "gender": "Male"},
-            {"id": 2, "name": "Khaled Jamal", "gender": "Male"},
-            {"id": 3, "name": "Mahmoud Sloma", "gender": "Male"},
-            {"id": 4, "name": "Osama Nour", "gender": "Male"},
-            {"id": 5, "name": "Amany mhmd", "gender": "Female"}
+            {"id": 1, "name": "Tarek Mostafa", "firstname": "Tarek", "lastname": "Mostafa", "jobtitle":"HR", "password": "T123456" , "email": "trkmos@yahoo.com"},
+            {"id": 2, "name": "Khaled Jamal", "firstname": "Khaled", "lastname": "Jamal", "jobtitle":"HR", "password": "K123456" , "email": "khaledjamalhr@gmail.com"},
+            {"id": 3, "name": "Mahmoud Sloma", "firstname": "Mahmoud", "lastname": "Slouma", "jobtitle":"IT", "password": "M123456" , "email": "amany.m@gmail.com"},
+            {"id": 4, "name": "Osama Nour", "firstname": "Osama", "lastname": "Nour", "jobtitle":"IT", "password": "O123456" , "email": "Mrosamanour@gmail.com"},
+            {"id": 5, "name": "Amany mhmd", "firstname": "Amany", "lastname": "Harb", "jobtitle":"IT", "password": "A123456" , "email": "mslouma@gmail.com"}
           ]
   // }
   // }

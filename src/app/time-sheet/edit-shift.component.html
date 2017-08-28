@@ -1,9 +1,26 @@
-<p>
-  editshift works!
-</p>
+<h2>Edit Shift</h2>
+
+<strong>In and out time</strong><br>
+<select [(ngModel)]="selectedValue">
+  <option>Select Name</option>
+  <option *ngFor="let user of users" [ngValue]="user.name">{{user.name}}</option>
+</select>
+<br>
+<hr>
 
 
-<!-- model -->
+<strong>Employee</strong><br>
+<input type="datetime-local" [(ngModel)]="shiftIn"><br>
+<input type="datetime-local" [(ngModel)]="shiftOut">
+<br><hr>
+<strong>Work report</strong><br>
+<input type="text" placeholder="Write something">
+<button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
+
+
+   
+
+<!-- model 
                    <div id="mySidenavg2" class="sidenavg2">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNavigate2()">&times;</a>
   <div style="margin: 20px;">
@@ -32,5 +49,5 @@
 </div>
 
 
-                             <!-- model -->
+                             model -->
 

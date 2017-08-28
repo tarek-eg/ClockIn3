@@ -1,5 +1,20 @@
-<p>
-  add-shift works!
-</p>
+<h2>Add Shift</h2>
+
+<strong>Employee</strong><br>
+<p>The employee this shift is for. Select multiple employees to add one shift at once.</p>
+
+<select [(ngModel)]="selectedValue">
+  <option>Select Name</option>
+  <option *ngFor="let user of users" [ngValue]="user.name">{{user.name}}</option>
+</select>
+<br>
+<hr>
+
+<strong>Employee</strong><br>
+<input type="datetime-local" [(ngModel)]="shiftIn"><br>
+<input type="datetime-local" [(ngModel)]="shiftOut">
+<br><br>
+<button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
+
 
    
