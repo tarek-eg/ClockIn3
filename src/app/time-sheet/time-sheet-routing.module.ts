@@ -15,7 +15,7 @@ const routes: Routes = [
     ]
   }, 
     {path: 'time-sheet/:id', component: EditShiftComponent},
-    {path: 'add-shift', component: AddShiftComponent},
+    {path: 'time-sheet/add-shift', component: AddShiftComponent},
   
 ];
 
