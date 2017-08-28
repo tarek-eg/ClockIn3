@@ -12,6 +12,7 @@ const routes: Routes = [
        {path: '', component:UsersComponent },
        {path: ':id', component:UserProfileComponent},
        {path: 'add-user', component:AddUserComponent},
+       
     ]},
     
 ];

@@ -16,6 +16,27 @@ import { DatePipeComponent } from './shared/date.pipe';
 import { MomentModule } from 'angular2-moment';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 
+
+import { FormsModule }    from '@angular/forms';
+
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers/index';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+
+
+import { AlertComponent } from './_directives/index';
+import { AuthGuard } from './_guards/index';
+import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { LoginComponent2 } from './_login/index';
+import { RegisterComponent } from './register/index';
+
+
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +44,10 @@ import { TopNavbarComponent } from './top-navbar/top-navbar.component';
     NotFoundComponent,
     LoginComponent,
     DatePipeComponent,
-    TopNavbarComponent
+    TopNavbarComponent,
+    AlertComponent,
+    LoginComponent2,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +57,20 @@ import { TopNavbarComponent } from './top-navbar/top-navbar.component';
     AppRoutingModule,
     MomentModule,
     HttpModule,
-    
+    FormsModule    
 
   ],
-  providers: [UsersService],
+  providers: [UsersService,
+  AuthGuard,
+        AlertService,
+        AuthenticationService,
+        UserService,
+
+        // providers used to create fake backend
+        fakeBackendProvider,
+        MockBackend,
+        BaseRequestOptions
+      ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
