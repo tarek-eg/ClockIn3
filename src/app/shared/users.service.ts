@@ -6,6 +6,10 @@ export class User{
   constructor(public id: number, public name: string, public gender: string) { }
 }
 
+export class xUser{
+  constructor(public id: number, public startTime: Date, public endTime:any) { }
+}
+
 
   let USERS = [
     new User(1,"Tarek Mostafa", "Male"),
@@ -52,37 +56,44 @@ export class UsersService {
     return [
     {
         "username": "Tarek Goda", 
-        "date": "2017-08-26", 
-        "timein": "9:29", 
-        "timeout": "11:35", 
+        "date": "2013-02-08 09:30:26",  
+        "timein": "2013-02-08 09:30:26", 
+        "timeout": "2013-02-08 09:40:26", 
         "total": "2 hours, 6 mins" 
     }, {
         "username": "Amani Harb", 
-        "date": "2017-08-26",
-        "timein": "8:11", 
-        "timeout": "12:01", 
+        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "timein": "08 26, 2017 09:00:00 GMT+0300", 
+        "timeout": "08 26, 2017 11:15:00 GMT+0300",  
         "total": "4 hours, 22 mins" 
     },{
         "username": "Khaled Jamal", 
-        "date": "2017-08-27", 
-        "timein": "9:03", 
-        "timeout": "15:33", 
+        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "timein": "08 26, 2017 09:00:00 GMT+0300", 
+        "timeout": "", 
         "total": "1 hours, 9 mins" 
     },{
         "username": "Osama Nour", 
-        "date": "2017-08-27", 
-        "timein": "7:12", 
-        "timeout": "19:01", 
+        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "timein": "08 26, 2017 09:00:00 GMT+0300", 
+        "timeout": "08 26, 2017 11:15:00 GMT+0300",  
         "total": "0 hours, 33 mins" 
     },{
         "username": "Mahmoud Slouma", 
-        "date": "2017-08-28",  
-        "timein": "11:11", 
-        "timeout": "13:00", 
+        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "timein": "08 26, 2017 09:00:00 GMT+0300", 
+        "timeout": "08 26, 2017 11:15:00 GMT+0300", 
         "total": "8 hours, 1 mins" }
   
   ]
 }
+
+getTimesheet() {
+  return this.myUsers
+  
+}
+
+myUsers:Array<xUser>
 }
   
 

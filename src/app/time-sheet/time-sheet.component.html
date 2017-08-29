@@ -64,11 +64,12 @@
         </div>
     </td>
 
-     <td>{{ shift.timein }}</td>
+     <td>{{ shift.timein | date:'HH:mm' }}</td>
 
-     <td>{{ shift.timeout }}</td>
+     <td *ngIf="shift.timeout"> {{shift.timeout  | date:'HH:mm'  }}</td>
+     <td *ngIf="!shift.timeout"><button (click)="endShiftNow(shift.timein)">Edit shift</button> <td>
     <td> {{ shift.date | date: fullDate}} </td>
-     <td> {{ shift.total}}</td>
+     <td> {{ CalcTime(shift.timein, shift.timeout ) }}</td>
      <td><button (click)="EditRef(i, shift.timein, shift.timeout)">Edit</button> </td>
      <td><button>Delete</button> </td>
 

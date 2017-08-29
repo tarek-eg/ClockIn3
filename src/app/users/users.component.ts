@@ -59,15 +59,6 @@ deleteUser(){
 
 
 
-export  interface UserT {
-    id: any,
-    name: any,
-    firstname: any,
-    lastname: any,
-    jobtitle: any,
-    password: any,
-    email: any
-}
 
 
 export  class Account {

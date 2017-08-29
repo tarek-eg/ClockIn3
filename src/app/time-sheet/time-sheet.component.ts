@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { UsersService } from '../shared/users.service';
-
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-time-sheet',
@@ -41,6 +42,14 @@ clearAll(){
   this.xUser = "All"
 }
 
+endShiftNow(index){
+  this.timeOut = new Date().toLocaleTimeString('en-US', { hour12: false, 
+                                             hour: "numeric", 
+                                             minute: "numeric"});
+
+  
+  this.timesheetsDB[2].timeout = this.timeOut
+}
 EditRef(index, timein, timeout){
   this.index = index
   this.timeIn = timein
@@ -59,5 +68,16 @@ onEditCancel(){
   this.isEditTrue = false
 }
 
+CalcTime(start, end){
+ 
+  return Calc(start, end)
+}
+}
+
+
+function Calc(x, y){
+  //return moment.utc(moment(x,"DD/MM/YYYY HH:mm").diff(moment(y,"DD/MM/YYYY HH:mm"))).format("HH:mm")
+
+return moment.duration(moment(x).diff(moment(y)));
 }
 
