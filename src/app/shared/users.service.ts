@@ -56,9 +56,9 @@ export class UsersService {
     return [
     {
         "username": "Tarek Goda", 
-        "date": "2013-02-08 09:30:26",  
-        "timein": "2013-02-08 09:30:26", 
-        "timeout": "2013-02-08 09:40:26", 
+        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "timein": "08 26, 2017 09:00:00 GMT+0300", 
+        "timeout": "08 26, 2017 09:00:00 GMT+0300", 
         "total": "2 hours, 6 mins" 
     }, {
         "username": "Amani Harb", 

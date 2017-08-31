@@ -75,9 +75,9 @@ CalcTime(start, end){
 }
 
 
-function Calc(x, y){
-  //return moment.utc(moment(x,"DD/MM/YYYY HH:mm").diff(moment(y,"DD/MM/YYYY HH:mm"))).format("HH:mm")
+function Calc(y, x){
+  //return moment.utc(moment(x,"DD/MM/YYYY hh:mm").diff(moment(y,"DD/MM/YYYY hh:mm"))).format("hh:mm")
+  return moment.duration(moment(x).diff(moment(y)));
 
-return moment.duration(moment(x).diff(moment(y)));
 }
 
