@@ -1,11 +1,14 @@
 <h1>Profile info</h1><br>
+user id {{user.id}} {{user.name}}
+<br>
+<br>
 <strong>Basic Info</strong><br>
 <label>First name
-    <input>
+    <input placeholder={{user.name}}>
 </label>
 <br>
 <label>Last name
-    <input>
+    <input placeholder={{user.name}}>
 </label>
 <br>
 <label> Job Title
@@ -20,3 +23,4 @@
 </label>
 <br><br>
 <button>Save Changes</button>
+<button>Cancel</button>

@@ -14,8 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { UsersService } from './shared/users.service';
 import { DatePipeComponent } from './shared/date.pipe';
 import { MomentModule } from 'angular2-moment';
-import { TopNavbarComponent } from './top-navbar/top-navbar.component';
-
+import { SharedModule } from './shared/shared.module';
 
 import { FormsModule }    from '@angular/forms';
 
@@ -44,10 +43,10 @@ import { RegisterComponent } from './register/index';
     NotFoundComponent,
     LoginComponent,
     DatePipeComponent,
-    TopNavbarComponent,
     AlertComponent,
     LoginComponent2,
-    RegisterComponent
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +56,8 @@ import { RegisterComponent } from './register/index';
     AppRoutingModule,
     MomentModule,
     HttpModule,
-    FormsModule    
+    FormsModule,
+    SharedModule 
 
   ],
   providers: [UsersService,

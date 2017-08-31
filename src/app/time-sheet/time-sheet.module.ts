@@ -10,13 +10,15 @@ import { ClockActionComponent } from './clock-action.component';
 import { EditShiftBottomComponent } from './edit-shift-bottom.component';
 import { TimeSheetHomeComponent } from './time-sheet-home.component';
 import { TimeFilterPipe } from './time-filter.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     TimeSheetRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [TimeSheetComponent,
      AddShiftComponent,

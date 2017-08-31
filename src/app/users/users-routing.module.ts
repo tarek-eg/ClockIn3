@@ -10,12 +10,11 @@ const routes: Routes = [
     { path:'users', component: UsersHomeComponent,
      children:[
        {path: '', component:UsersComponent },
-       {path: ':id', component:UserProfileComponent},
-       {path: 'add-user', component:AddUserComponent},
-       
+       {path: ':id', component:UserProfileComponent},       
     ]},
     
-];
+]
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

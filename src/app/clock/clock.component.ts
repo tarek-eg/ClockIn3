@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import { UsersService, xUser } from '../shared/users.service';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
+// import { SharedModule} from '../shared/shared.module';
 
 @Component({
   selector: 'app-clock',
