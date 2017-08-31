@@ -27,30 +27,29 @@ export class ClockComponent {
   }
 
   TogggleShift() {
-    this._shiftStart = !this._shiftStart
-    if (!this._shiftStart) {
-      //start shift
-      this.timeSheet.push(new xUser(4, new Date, "Open"))
-      this.xDuration = Timer(this.today)
-      setInterval(() => this.xDuration = Timer(this.today), 1000)
-      // @Team - this creates a new timeSheet instance. Throw it into the DB.
-    } else {
-      //end shift
-      updateTime(this.timeSheet, 4)
-      // @Team - this function updates the timeSheet with the shift end date. Use it to update the service.   
-    }
-
+  this._shiftStart = !this._shiftStart
+  if (!this._shiftStart) {
+    //start shift
+    this.timeSheet.push(new xUser(4, new Date, "Open"))
+    this.xDuration = Timer(this.today)
+    setInterval(() => this.xDuration = Timer(this.today), 1000)
+    // @Team - this creates a new timeSheet instance. Throw it into the DB.
+  } else {
+    //end shift
+    updateTime(this.timeSheet, 4)
+    // @Team - this function updates the timeSheet with the shift end date. Use it to update the service.   
   }
-  ngOnInit() {
-    //pull timesheets to ds
-    this.ds = this.usersService.getTimesheets()
+  }
 
+ngOnInit() {
+  //pull timesheets to ds
+  this.ds = this.usersService.getTimesheets()
 
-    // rettrieve if user is online
-    if (isUserOnline(this.ds, "Khaled Jamal")) {
-      this._shiftStart = !this._shiftStart
-      this.xDuration = Timer(this.today)
-      setInterval(() => this.xDuration = Timer(this.today), 1000)
+  // rettrieve if user is online
+  if (isUserOnline(this.ds, "Khaled Jamal")) {
+    this._shiftStart = !this._shiftStart
+    this.xDuration = Timer(this.today)
+    setInterval(() => this.xDuration = Timer(this.today), 1000)
     }
   }
 }
