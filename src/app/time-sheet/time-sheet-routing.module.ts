@@ -11,11 +11,11 @@ const routes: Routes = [
     {path: 'time-sheet', component: TimeSheetHomeComponent,
     children:[
           {path: '', component: TimeSheetComponent},
-          {path: 'clock-action', component: ClockActionComponent }
+          {path: 'clock-action', component: ClockActionComponent },
     ]
   }, 
-    {path: 'time-sheet/:id', component: EditShiftComponent},
-    {path: 'time-sheet/add-shift', component: AddShiftComponent},
+          {path: 'add-shift', component: AddShiftComponent},
+          {path: 'time-sheet/:id', component: EditShiftComponent},
   
 ];
 

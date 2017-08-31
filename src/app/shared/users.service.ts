@@ -20,7 +20,7 @@ export class xUser{
 
   ];
 
-//   let usersPromise = Promise.resolve(USERS);
+  let usersPromise = Promise.resolve(USERS);
 
 @Injectable()
 export class UsersService {
@@ -28,6 +28,12 @@ export class UsersService {
     constructor(private _http:Http){
       
   }
+
+  getUser(id: number | string){
+
+      return usersPromise
+      .then(users => users.find(user=> user.id === +id));
+    };
 
   getUsers(){ {  
 

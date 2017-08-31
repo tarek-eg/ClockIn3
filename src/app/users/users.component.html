@@ -28,12 +28,14 @@
      <td >  {{user.jobtitle}}</td>
           <td >  {{user.email}}</td>
     <td> <button (click)="deleteUser(user.name)">Delete</button></td>
+        <td> <button (click)=onSelect(user)>Edit</button></td>
+
 
     </tr>
 
 </tbody>
 </table>
-                          
+                        
 </section>
   </div>
 
