@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 import * as moment from 'moment';
-import 'moment/locale/pt-br';
+
 
 
 @Component({

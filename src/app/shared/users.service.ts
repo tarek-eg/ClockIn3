@@ -74,9 +74,9 @@ export class UsersService {
         "total": "4 hours, 22 mins" 
     },{
         "username": "Khaled Jamal", 
-        "date": "08 26, 2017 09:00:00 GMT+0300",  
-        "timein": "08 26, 2017 09:00:00 GMT+0300", 
-        "timeout": "", 
+        "date": "08 26, 2017",  
+        "timein": "08 26, 2017 01:PM", 
+        "timeout": "Open", 
         "total": "1 hours, 9 mins" 
     },{
         "username": "Osama Nour", 

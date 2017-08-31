@@ -13,7 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { UsersService } from './shared/users.service';
 import { DatePipeComponent } from './shared/date.pipe';
-import { MomentModule } from 'angular2-moment';
+//import { MomentModule } from 'angular2-moment';
 import { SharedModule } from './shared/shared.module';
 
 import { FormsModule }    from '@angular/forms';
@@ -54,7 +54,7 @@ import { RegisterComponent } from './register/index';
     UsersModule,
     TimeSheetModule,
     AppRoutingModule,
-    MomentModule,
+   //MomentModule,
     HttpModule,
     FormsModule,
     SharedModule 

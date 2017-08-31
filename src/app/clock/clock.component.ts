@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipeComponent } from '../shared/date.pipe';
 import {Observable} from 'rxjs/Rx';
 import { UsersService, xUser } from '../shared/users.service';
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
+var moment = require('moment');
+require('moment-precise-range-plugin');
+
+
 // import { SharedModule} from '../shared/shared.module';
 
 @Component({
@@ -13,24 +15,27 @@ import 'moment/locale/pt-br';
 })
 export class ClockComponent  {
 private timeSheet:Array<xUser> = []
- 
+  today = '2017-08-31 01:00 PM'
+ xDuration  
+ ds
 
-    today: number = Date.now();
+  
     _shiftStart:boolean = true
     lastUpdated
   constructor(private usersService:UsersService) { 
     this.lastUpdated = new Date()
-
-
-
   }
 
 TogggleShift(){
   this._shiftStart = !this._shiftStart
-
+  
+  
   if (!this._shiftStart){
+
     //start shift
       this.timeSheet.push(new xUser(4, new Date, "Open"))
+      this.xDuration = Timer(this.today)
+      setInterval(()=> this.xDuration = Timer(this.today), 1000)
       // @Team - this creates a new timeSheet instance. Throw it into the DB.
   }else{
     //end shift
@@ -39,7 +44,22 @@ TogggleShift(){
   }
  
 }
+ngOnInit(){
+    //pull timesheets to ds
+    this.ds = this.usersService.getTimesheets()
+   
+   
+    // rettrieve if user is online
+    if (isUserOnline(this.ds, "Khaled Jamal")){
+      this._shiftStart = !this._shiftStart
+      this.xDuration = Timer(this.today)
+      setInterval(()=> this.xDuration = Timer(this.today), 1000)
+    }
 
+}
+
+getTime(){
+ return moment.preciseDiff(this.today,moment().format("LLL"))}
 }
 
 
@@ -53,6 +73,19 @@ function updateTime (array, x){
         if(array[i].id == x && array[i].endTime == "Open"){
           array[i].endTime = new Date
           break;
+        }
+    }
+}
+
+function Timer(today){
+  return moment.preciseDiff(today,moment().format("LLL"))
+}
+
+
+function isUserOnline(array, username):boolean{
+      for(var i in array) { 
+        if(array[i].username == username && array[i].timeout == "Open"){
+          return true
         }
     }
 }

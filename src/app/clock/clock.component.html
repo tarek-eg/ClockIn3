@@ -1,5 +1,6 @@
 <app-top-navbar>Time Clock</app-top-navbar>
 
+
 <div>
 
 <!-- <div>
@@ -14,7 +15,7 @@
 <h1 class="greeting">Happy {{today | date:'EEEE'}}, Cycler!</h1>
         <div>
         <h3 class="current-time">It's currently {{today | date:'hh:mm'}}</h3>
-        <p *ngIf="!_shiftStart" class="current-time">You started to work since <strong><i>{{today | amTimeAgo}}</i></strong></p>
+        <p *ngIf="!_shiftStart" class="current-time">Total time worked <strong><i>{{ xDuration}}</i></strong></p>
  
       </div>
 
