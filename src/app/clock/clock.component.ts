@@ -15,14 +15,14 @@ require('moment-precise-range-plugin');
 
 
 export class ClockComponent {
-  //private timeSheet: Array<xUser> = []
+  
   today = '2017-08-31 01:00 PM'
   xDuration
   xd
   ds
   _shiftStart: boolean = true
   lastUpdated
-
+  timerInterval
   
   constructor(private userService: UserService) {
     this.lastUpdated = new Date()
@@ -34,11 +34,7 @@ export class ClockComponent {
     //start shift
     //this.timeSheet.push(new xUser(4, new Date, "Open"))
     this.xDuration = Timer(this.today)
-    //setInterval(() => this.xDuration = Timer(this.today), 1000)
-    //this.xDuration = setInterval(() => console.log(this.xDuration = Timer(this.today)), 1000)
-    //setInterval(() => console.log(this.xDuration = this.wow()), 1000)
-    // @Team - this creates a new timeSheet instance. Throw it into the DB.
-     setInterval(() => console.log(this.xDuration = this.wow()), 1000)
+    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.today), 1000)
 
   
   } else {
@@ -56,16 +52,13 @@ ngOnInit() {
   if (isUserOnline(this.ds, "Khaled Jamal")) {
     this._shiftStart = !this._shiftStart
     this.xDuration = Timer(this.today)
-    setInterval(() => this.xDuration = Timer(this.today), 1000)
+    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.today), 1000)
     }
-  }
-  wow(){
-    return moment.preciseDiff(this.today, moment().format("LLL"))
   }
 
   ngOnDestroy(){
     console.log("I'm goner!")
-   
+    clearInterval(this.timerInterval)
   }
 }
 
@@ -86,6 +79,7 @@ function updateTime(array, x) {
 
 function Timer(today) {
   return moment.preciseDiff(today, moment().format("LLL"))
+  
 }
 
 
@@ -96,3 +90,14 @@ function isUserOnline(array, username): boolean {
     }
   }
 }
+
+
+
+
+
+
+    //private timeSheet: Array<xUser> = []
+    //setInterval(() => this.xDuration = Timer(this.today), 1000)
+    //this.xDuration = setInterval(() => console.log(this.xDuration = Timer(this.today)), 1000)
+    //setInterval(() => console.log(this.xDuration = this.wow()), 1000)
+    // @Team - this creates a new timeSheet instance. Throw it into the DB.
