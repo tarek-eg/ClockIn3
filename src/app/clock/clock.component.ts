@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipeComponent } from '../shared/date.pipe';
 import { Observable } from 'rxjs/Rx';
-import { UsersService, xUser } from '../shared/users.service';
+//import { UsersService, xUser } from '../shared/users.service';
+import { UserService } from '../ServicesAPI/User.Service';
 var moment = require('moment');
 require('moment-precise-range-plugin');
 
@@ -14,15 +15,16 @@ require('moment-precise-range-plugin');
 
 
 export class ClockComponent {
-  private timeSheet: Array<xUser> = []
+  //private timeSheet: Array<xUser> = []
   today = '2017-08-31 01:00 PM'
   xDuration
+  xd
   ds
   _shiftStart: boolean = true
   lastUpdated
 
   
-  constructor(private usersService: UsersService) {
+  constructor(private userService: UserService) {
     this.lastUpdated = new Date()
   }
 
@@ -30,27 +32,40 @@ export class ClockComponent {
   this._shiftStart = !this._shiftStart
   if (!this._shiftStart) {
     //start shift
-    this.timeSheet.push(new xUser(4, new Date, "Open"))
+    //this.timeSheet.push(new xUser(4, new Date, "Open"))
     this.xDuration = Timer(this.today)
-    setInterval(() => this.xDuration = Timer(this.today), 1000)
+    //setInterval(() => this.xDuration = Timer(this.today), 1000)
+    //this.xDuration = setInterval(() => console.log(this.xDuration = Timer(this.today)), 1000)
+    //setInterval(() => console.log(this.xDuration = this.wow()), 1000)
     // @Team - this creates a new timeSheet instance. Throw it into the DB.
+     setInterval(() => console.log(this.xDuration = this.wow()), 1000)
+
+  
   } else {
     //end shift
-    updateTime(this.timeSheet, 4)
+    //updateTime(this.timeSheet, 4)
     // @Team - this function updates the timeSheet with the shift end date. Use it to update the service.   
   }
   }
 
 ngOnInit() {
   //pull timesheets to ds
-  this.ds = this.usersService.getTimesheets()
-
+  ///////this.ds = this.usersService.getTimesheets()
+  console.log(this.userService.getAllusers())
   // rettrieve if user is online
   if (isUserOnline(this.ds, "Khaled Jamal")) {
     this._shiftStart = !this._shiftStart
     this.xDuration = Timer(this.today)
     setInterval(() => this.xDuration = Timer(this.today), 1000)
     }
+  }
+  wow(){
+    return moment.preciseDiff(this.today, moment().format("LLL"))
+  }
+
+  ngOnDestroy(){
+    console.log("I'm goner!")
+   
   }
 }
 
