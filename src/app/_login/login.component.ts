@@ -39,4 +39,8 @@ export class LoginComponent2 implements OnInit {
                     this.loading = false;
                 });
     }
+
+    localStorage(){
+        localStorage.setItem('currentUser', 'Khaled Jamal')
+    }
 }

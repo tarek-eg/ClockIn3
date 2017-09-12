@@ -57,6 +57,9 @@ export class UsersService {
 }
   }
 
+  timeSheet
+
+
   getTimesheets(){
     //Khaled Jamal
     return [
@@ -75,7 +78,7 @@ export class UsersService {
     },{
         "username": "Khaled Jamal", 
         "date": "08 26, 2017",  
-        "timein": "08 26, 2017 01:PM", 
+        "timein": "09 12, 2017 02:00 PM", 
         "timeout": "Open", 
         "total": "1 hours, 9 mins" 
     },{
@@ -92,6 +95,7 @@ export class UsersService {
         "total": "8 hours, 1 mins" }
   
   ]
+
 }
 
 getTimesheet() {
@@ -100,8 +104,12 @@ getTimesheet() {
 }
 
 myUsers:Array<xUser>
+
 }
   
+export class TS {
+   constructor(public username: string, public date: Date, public timein: Date, public timeout:any, public total: any){}
+}
 
   
 

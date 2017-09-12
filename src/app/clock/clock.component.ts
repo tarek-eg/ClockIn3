@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipeComponent } from '../shared/date.pipe';
 import { Observable } from 'rxjs/Rx';
-//import { UsersService, xUser } from '../shared/users.service';
-import { UserService } from '../ServicesAPI/User.Service';
+import { UsersService, xUser, TS } from '../shared/users.service';
+//import { UserService } from '../ServicesAPI/User.Service';
 var moment = require('moment');
 require('moment-precise-range-plugin');
 
@@ -16,15 +16,17 @@ require('moment-precise-range-plugin');
 
 export class ClockComponent {
   
-  today = '2017-08-31 01:00 PM'
+  today 
+  Wawa = setInterval(()=> this.today = new Date, 1000) //'2017-08-31 01:00 PM'
   xDuration
   xd
-  ds
+  user: string = localStorage.getItem('currentUser')
+  
   _shiftStart: boolean = true
   lastUpdated
   timerInterval
   
-  constructor(private userService: UserService) {
+  constructor(private usersService: UsersService) {
     this.lastUpdated = new Date()
   }
 
@@ -32,27 +34,40 @@ export class ClockComponent {
   this._shiftStart = !this._shiftStart
   if (!this._shiftStart) {
     //start shift
-    //this.timeSheet.push(new xUser(4, new Date, "Open"))
-    this.xDuration = Timer(this.today)
-    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.today), 1000)
-
+    this.usersService.timeSheet.push(new TS(localStorage.getItem('currentUser'), new Date, new Date, "Open", ""))
+    let xRow = OpenShift(this.usersService.timeSheet, 'Khaled Jamal')
+    this.xDuration = "Less than a minute"
+    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
+    
   
   } else {
     //end shift
-    //updateTime(this.timeSheet, 4)
-    // @Team - this function updates the timeSheet with the shift end date. Use it to update the service.   
+    let x = updateTime(this.usersService.timeSheet, 'Khaled Jamal')
+
+    clearInterval(this.timerInterval)
   }
   }
 
 ngOnInit() {
-  //pull timesheets to ds
-  ///////this.ds = this.usersService.getTimesheets()
-  console.log(this.userService.getAllusers())
+
+  this.today = new Date
+  // retrieve timesheet to check if the user is online
+  
+  if (this.usersService.timeSheet) {
+    console.log("Hello1")
+  } else {
+    console.log("Hello2")
+    this.usersService.timeSheet = this.usersService.getTimesheets()
+  }
+
+  
+
   // rettrieve if user is online
-  if (isUserOnline(this.ds, "Khaled Jamal")) {
+  if (isUserOnline(this.usersService.timeSheet, "Khaled Jamal")) {
     this._shiftStart = !this._shiftStart
-    this.xDuration = Timer(this.today)
-    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.today), 1000)
+    let xRow = OpenShift(this.usersService.timeSheet, 'Khaled Jamal')
+    this.xDuration = Timer(this.usersService.timeSheet[xRow].timein)
+    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
     }
   }
 
@@ -69,28 +84,40 @@ function Calc(y, x) {
 
 function updateTime(array, x) {
   for (var i in array) {
-    if (array[i].id == x && array[i].endTime == "Open") {
-      array[i].endTime = new Date
-      break;
+    if (array[i].username == x && array[i].timeout == "Open") {
+      array[i].timeout = new Date
+      return i
+      //break;
     }
   }
 }
 
 
-function Timer(today) {
-  return moment.preciseDiff(today, moment().format("LLL"))
-  
+function Timer(timein) {
+  if (moment.preciseDiff(moment(timein).format("LLL"), moment().format("LLL"))=="") {
+    return "Less than a minute"
+  } else{
+  return moment.preciseDiff(moment(timein).format("LLL"), moment().format("LLL"))
+  }
 }
 
 
 function isUserOnline(array, username): boolean {
   for (var i in array) {
+   
     if (array[i].username == username && array[i].timeout == "Open") {
       return true
     }
   }
 }
 
+function OpenShift(array, username) {
+  for (var i in array) {
+    if (array[i].username == username && array[i].timeout == "Open") {
+      return i
+    }
+  }
+}
 
 
 
