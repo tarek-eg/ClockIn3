@@ -35,7 +35,7 @@ export class ClockComponent {
   this._shiftStart = !this._shiftStart
   if (!this._shiftStart) {
     //start shift
-    this.usersService.timeSheet.push(new TS(localStorage.getItem('currentUser'), new Date, new Date, "Open", ""))
+    this.usersService.timeSheet.push(new TS(localStorage.getItem('currentUser'), new Date, new Date, "", ""))
     let xRow = OpenShift(this.usersService.timeSheet, 'Khaled Jamal')
     this.xDuration = "less than a minute"
     this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
@@ -85,7 +85,7 @@ function Calc(y, x) {
 
 function updateTime(array, x) {
   for (var i in array) {
-    if (array[i].username == x && array[i].timeout == "Open") {
+    if (array[i].username == x && array[i].timeout == "") {
       array[i].timeout = new Date
       return i
       //break;
@@ -106,7 +106,7 @@ function Timer(timein) {
 function isUserOnline(array, username): boolean {
   for (var i in array) {
    
-    if (array[i].username == username && array[i].timeout == "Open") {
+    if (array[i].username == username && array[i].timeout == "") {
       return true
     }
   }
@@ -114,7 +114,7 @@ function isUserOnline(array, username): boolean {
 
 function OpenShift(array, username) {
   for (var i in array) {
-    if (array[i].username == username && array[i].timeout == "Open") {
+    if (array[i].username == username && array[i].timeout == "") {
       return i
     }
   }

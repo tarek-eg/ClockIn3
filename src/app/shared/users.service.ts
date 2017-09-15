@@ -79,7 +79,7 @@ export class UsersService {
         "username": "Khaled Jamal", 
         "date": "08 26, 2017",  
         "timein": "09 12, 2017 02:00 PM", 
-        "timeout": "Open", 
+        "timeout": "", 
         "total": "1 hours, 9 mins" 
     },{
         "username": "Osama Nour", 
