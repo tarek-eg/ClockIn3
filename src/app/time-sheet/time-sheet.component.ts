@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { UsersService } from '../shared/users.service';
+import { Router } from '@angular/router'
 var moment = require('moment');
 require('moment-precise-range-plugin');
 
@@ -14,21 +15,22 @@ require('moment-precise-range-plugin');
 
 })
 export class TimeSheetComponent  {
+  xRow: number
   timeSheet
   xUser
   xDate
   index
-  isEditTrue = false
+  isedittrue:boolean = false
   timeIn
   timeOut
 
-  constructor(private usersService:UsersService) {
+  constructor(private usersService:UsersService, private router:Router) {
     
    }
 
   ngOnInit() {
     this.xUser = "All"
-    this.timeSheet = this.usersService.timeSheet  
+    this.timeSheet = this.usersService.getTimesheets()  
 
   }
 
@@ -54,26 +56,27 @@ endShiftNow(index){
   this.usersService.timeSheet[2].timeout = this.timeOut
 }
 EditRef(index, timein, timeout){
-  
   this.index = index
-  this.timeIn = moment(timein).format("LLLL")
-  this.timeOut =  moment(timeout, "YYYY-MM-DD HH:mm")
-  
-  console.log(moment(timeout).format())
-  console.log(moment(timeout))
-  console.log(moment(timeout).toDate())
-  this.isEditTrue = true
+  this.timeIn = moment(timein).format().substring(0,16)
+  this.timeOut =  moment(timeout).format().substring(0,16)
+  this.xRow = index
+  this.isedittrue = true
 }
 
+
 onSubmit(form){
-  console.log(form)
-  this.isEditTrue = false
+  this.timeSheet[this.xRow].timein = moment(form.timein).format()
+  this.timeSheet[this.xRow].timeout = moment(form.timeout).format()
+  this.timeSheet[this.xRow].total = TotalDuration(form.timein, form.timeout)
+
+  this.isedittrue = false
+
 }
 onEditCancel(){
-  this.index = null
-  this.timeIn = null
-  this.timeOut = null
-  this.isEditTrue = false
+  //this.index = null
+ // this.timeIn = null
+ // this.timeOut = null
+  this.isedittrue = false
 }
 
 CalcTime(start, end){
@@ -89,3 +92,7 @@ function Calc(y, x){
 
 }
 
+
+function TotalDuration(timein, timeout) {
+  return moment.preciseDiff(moment(timein), moment(timeout))
+}
