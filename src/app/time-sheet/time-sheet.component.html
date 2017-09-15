@@ -15,12 +15,12 @@
   <a (click)="clearAll()">Clear Filters</a>
 
 </div>
-
+{{ timeIn }} 
 <div *ngIf="isEditTrue" class="copm-back">
   <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms.value)">
     <label>username</label> &emsp;&emsp;&emsp;&emsp;
-    From: &emsp; <input name="timein" [(ngModel)]="timeIn"> &emsp;&emsp;
-    To: &emsp; <input name="timeout" [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
+    From: &emsp; <input type="datetime-local"  name="timein" [(ngModel)]="timeIn"> &emsp;&emsp;
+    To: &emsp; <input type="datetime-local"  name="timeout" [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
     <button type="submit">Save</button>&emsp;
     <button (click)="onEditCancel()">Cancel</button>
   </form>
@@ -57,7 +57,7 @@
       <thead></thead>
 <tbody class="t-item" >
 
-  <tr *ngFor="let shift of timesheetsDB | timeFilter: xUser : xDate; let i = index" data-toggle="modal" data-target=".bs-example-modal-lg">
+  <tr *ngFor="let shift of timeSheet | timeFilter: xUser : xDate; let i = index" data-toggle="modal" data-target=".bs-example-modal-lg">
     <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
       <td >
         <div>
@@ -78,7 +78,7 @@
 
 </tbody>
 </table>
- <td><button >Edit</button> </td>
+
                          
 </section>
   </div>

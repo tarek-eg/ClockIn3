@@ -1,6 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
 import { UsersService } from '../shared/users.service';
-import * as moment from 'moment';
+var moment = require('moment');
+require('moment-precise-range-plugin');
+
 
 
 
@@ -12,7 +14,7 @@ import * as moment from 'moment';
 
 })
 export class TimeSheetComponent  {
-  timesheetsDB
+  timeSheet
   xUser
   xDate
   index
@@ -26,7 +28,7 @@ export class TimeSheetComponent  {
 
   ngOnInit() {
     this.xUser = "All"
-    this.timesheetsDB = this.usersService.getTimesheets()  
+    this.timeSheet = this.usersService.timeSheet  
 
   }
 
@@ -49,12 +51,17 @@ endShiftNow(index){
                                              minute: "numeric"});
 
   
-  this.timesheetsDB[2].timeout = this.timeOut
+  this.usersService.timeSheet[2].timeout = this.timeOut
 }
 EditRef(index, timein, timeout){
+  
   this.index = index
-  this.timeIn = timein
-  this.timeOut = timeout
+  this.timeIn = moment(timein).format("LLLL")
+  this.timeOut =  moment(timeout, "YYYY-MM-DD HH:mm")
+  
+  console.log(moment(timeout).format())
+  console.log(moment(timeout))
+  console.log(moment(timeout).toDate())
   this.isEditTrue = true
 }
 

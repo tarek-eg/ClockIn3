@@ -22,7 +22,7 @@ export class ClockComponent {
   xd
   user: string = localStorage.getItem('currentUser')
   
-  _shiftStart: boolean = true
+  _shiftStart= true
   lastUpdated
   timerInterval
   
@@ -31,12 +31,13 @@ export class ClockComponent {
   }
 
   TogggleShift() {
+    
   this._shiftStart = !this._shiftStart
   if (!this._shiftStart) {
     //start shift
     this.usersService.timeSheet.push(new TS(localStorage.getItem('currentUser'), new Date, new Date, "Open", ""))
     let xRow = OpenShift(this.usersService.timeSheet, 'Khaled Jamal')
-    this.xDuration = "Less than a minute"
+    this.xDuration = "less than a minute"
     this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
     
   
@@ -49,7 +50,7 @@ export class ClockComponent {
   }
 
 ngOnInit() {
-
+  
   this.today = new Date
   // retrieve timesheet to check if the user is online
   
@@ -95,7 +96,7 @@ function updateTime(array, x) {
 
 function Timer(timein) {
   if (moment.preciseDiff(moment(timein).format("LLL"), moment().format("LLL"))=="") {
-    return "Less than a minute"
+    return "less than a minute"
   } else{
   return moment.preciseDiff(moment(timein).format("LLL"), moment().format("LLL"))
   }
