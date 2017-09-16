@@ -19,17 +19,17 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule }    from '@angular/forms';
 
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers/index';
+// import { fakeBackendProvider } from './_helpers/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
 
-import { AlertComponent } from './_directives/index';
-import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, //UserService 
-} from './_services/index';
-import { LoginComponent2 } from './_login/index';
-import { RegisterComponent } from './register/index';
+// import { AlertComponent } from './_directives/index';
+// import { AuthGuard } from './_guards/index';
+// import { AlertService, AuthenticationService, //UserService 
+// } from './_services/index';
+// import { LoginComponent2 } from './_login/index';
+// import { RegisterComponent } from './register/index';
 
 import { UserService } from './ServicesAPI/User.Service'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
@@ -45,9 +45,9 @@ import { MaterialModule } from './material.module' //AngularMaterial - KJ
     NotFoundComponent,
     LoginComponent,
     DatePipeComponent,
-    AlertComponent,
-    LoginComponent2,
-    RegisterComponent,
+    // AlertComponent,
+    // LoginComponent2,
+    // RegisterComponent,
     
   ],
   imports: [
@@ -64,13 +64,13 @@ import { MaterialModule } from './material.module' //AngularMaterial - KJ
 
   ],
   providers: [UsersService,
-  AuthGuard,
-        AlertService,
-        AuthenticationService,
+  // AuthGuard,
+  //       AlertService,
+  //       AuthenticationService,
         UserService,
 
         // providers used to create fake backend
-        fakeBackendProvider,
+        // fakeBackendProvider,
         MockBackend,
         BaseRequestOptions
       ],
