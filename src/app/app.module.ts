@@ -34,8 +34,8 @@ import { RegisterComponent } from './register/index';
 import { UserService } from './ServicesAPI/User.Service'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 
-
-
+import { MaterialModule } from './material.module' //AngularMaterial - KJ
+ 
 
 
 @NgModule({
@@ -59,7 +59,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-ap
    //MomentModule,
     HttpModule,
     FormsModule,
-    SharedModule 
+    SharedModule,
+    MaterialModule 
 
   ],
   providers: [UsersService,
