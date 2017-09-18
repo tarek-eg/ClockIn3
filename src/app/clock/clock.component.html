@@ -1,32 +1,33 @@
-<app-top-navbar>Time Clock</app-top-navbar>
-<md-icon >menu</md-icon>
 
-<div>
+  <app-right-sidebar [bugerBox]='false'>
+    <h2>Time Clock</h2>
+  </app-right-sidebar>
 
-<!-- <div>
+
+
+  <!-- <div>
     <p>Today is {{today | date}}</p>
     <p>Or if you prefer, {{today | date:'fullDate'}}</p>
     <p>The time is {{today | date:'EEEE'}}</p>
     <p>Finally the date and time is {{today | date:'short'}}</p>
   </div>` -->
-<div >
-<div class="copm-back">
-  <div class="comp-margin">
-<h1 class="greeting">Happy {{today | date:'EEEE'}}, Cycler!</h1>
+ 
+    <div class="copm-back">
+      <div class="comp-margin">
+        <h1 class="greeting">Happy {{today | date:'EEEE'}}, Cycler!</h1>
         <div>
-        <h3 class="current-time">It's currently {{today | date:'hh:mm'}}</h3>
-        <p *ngIf="!_shiftStart" class="current-time">Total time worked <strong><i>{{ xDuration}}</i></strong></p>
- 
+          <h3 class="current-time">It's currently {{today | date:'hh:mm'}}</h3>
+          <p *ngIf="!_shiftStart" class="current-time">Total time worked <strong><i>{{ xDuration}}</i></strong></p>
+
+        </div>
+        <div *ngIf="!!!_shiftStart">
+          <button (click)="TogggleShift()" class="btn btn-danger btn-lg" style="padding: 12px 39px; margin-top: 24px;"> End Shift </button>
+        </div>
+
+        <div *ngIf="!!_shiftStart">
+          <button (click)="TogggleShift()" class="btn btn-success btn-lg" style="padding: 12px 39px; margin-top: 24px;"> Start Shift </button>
+        </div>
+        <!--<button (click)="TogggleShift()" [ngClass]="{_shiftStart ? btn btn-danger btn-l : btn btn-success btn-lg}" style="padding: 12px 39px; margin-top: 24px;">{{ _shiftStart ? 'Start Shift' : 'End Shift'}}</button>-->
+
       </div>
-<div *ngIf="!!!_shiftStart" >
-<button (click)="TogggleShift()" class ="btn btn-danger btn-lg" style="padding: 12px 39px; margin-top: 24px;"> End Shift </button>
 </div>
-
-<div *ngIf="!!_shiftStart" >
-<button (click)="TogggleShift()" class="btn btn-success btn-lg" style="padding: 12px 39px; margin-top: 24px;"> Start Shift </button>
-</div>
-<!--<button (click)="TogggleShift()" [ngClass]="{_shiftStart ? btn btn-danger btn-l : btn btn-success btn-lg}" style="padding: 12px 39px; margin-top: 24px;">{{ _shiftStart ? 'Start Shift' : 'End Shift'}}</button>-->
-  
-</div>
-
- 

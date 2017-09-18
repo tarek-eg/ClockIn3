@@ -12,13 +12,15 @@ import { TimeSheetHomeComponent } from './time-sheet-home.component';
 import { TimeFilterPipe } from './time-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
 
+import { MaterialModule } from '../material.module'
 
 @NgModule({
   imports: [
     CommonModule,
     TimeSheetRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   declarations: [TimeSheetComponent,
      AddShiftComponent,
