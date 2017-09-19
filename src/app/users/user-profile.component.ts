@@ -25,7 +25,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
        this.userId = +params['id']; // (+) converts string 'id' to a number
-
        // In a real app: dispatch action to load the details here.
     });
 
@@ -33,10 +32,6 @@ this.route.paramMap
     .switchMap((params: ParamMap) =>
       this.service.getUser(params.get('id')))
     .subscribe((user: User) => this.user = user);
-
-
-
-
   }
 
   ngOnDestroy() {

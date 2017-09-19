@@ -4,18 +4,17 @@ import { Routes, Router, ActivatedRoute,ParamMap } from '@angular/router';
 
 
 
-
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styles: []
 })
 export class UsersComponent implements OnInit {
-  userSelected: boolean = true
+  isUserSelected: boolean = true
   users
   user: User;
   private selectedId: number;
+  userSelected: string;
 
   constructor(private usersService: UsersService,
               private router: Router ) {}
@@ -23,25 +22,34 @@ export class UsersComponent implements OnInit {
               
 
   ngOnInit() {
-    this.users = this.usersService.getUsers();    
-    
-
+    this.users = this.usersService.getUsers();
 }
 
 onChange(index){
   if (this.users[index].isChecked == true){
-    this.userSelected = true
+    this.isUserSelected = true
+    console.log('Hi')
+    //this.userSelectedId      
   } else{
-    this.userSelected = false
+    this.isUserSelected = false    
+    this.selectedId = index
+    console.log(index)
   }
 }
 
 
-onSelect(user) {
-  this.router.navigate(['/users', user.id]);
-  
+onSelect(user) {  
+  this.user.id = 2
+  this.router.navigate(['/users', user.id]); 
+  // the user id is hard coded till we find a method to select the user from checkbox
+  // '2' should be user.id and passing user that checked in the method onSelect(user)
+  // the
+  // "Tarek Mostafa" 
 }
-isSelected(user: User) { return user.id === this.selectedId; }
+
+isSelected(user: User) { 
+  return user.id === this.selectedId;
+ }
 
 
 
@@ -53,8 +61,7 @@ isEmailDuplicate(){
   // to check if the email is duplicate
 }
 
-deleteUser(){
-  
+deleteUser(){  
 }
 
   addUser(fname, lname, email){
