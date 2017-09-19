@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../shared/users.service';
+import { UsersService, TS } from '../shared/users.service';
+var moment = require('moment');
+require('moment-precise-range-plugin');
+
 
 @Component({
   selector: 'app-add-shift',
@@ -13,8 +16,8 @@ selectedValue
     
    }
 
-   AddShift(x, y , z){
-     console.log(x + " " + y + " " + z)
+   AddShift(user, timein , timeout){
+    this.usersService.timeSheet.push(new TS(user, timein, timein, timeout, TotalDuration(timein,timeout)))
    }
   ngOnInit() {
     this.selectedValue = "Select Name"
@@ -22,4 +25,9 @@ selectedValue
 
   }
 
+  
+}
+
+function TotalDuration(timein, timeout) {
+  return moment.preciseDiff(moment(timein).format('LLLL'), moment(timeout).format('LLLL'))
 }

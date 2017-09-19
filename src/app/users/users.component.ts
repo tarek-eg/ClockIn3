@@ -14,7 +14,7 @@ import { Routes, Router, ActivatedRoute,ParamMap } from '@angular/router';
 export class UsersComponent implements OnInit {
 
   private users:Array<Account>
-
+  userSelected = false
   user: User;
   private selectedId: number;
 
@@ -28,6 +28,7 @@ export class UsersComponent implements OnInit {
   
 
 }
+
 
 onSelect(user) {
   this.router.navigate(['/users', user.id]);

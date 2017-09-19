@@ -16,7 +16,7 @@ require('moment-precise-range-plugin');
 })
 export class TimeSheetComponent  {
   xRow: number
-  timeSheet
+  timeSheet 
   xUser
   xDate
   index
@@ -30,8 +30,10 @@ export class TimeSheetComponent  {
 
   ngOnInit() {
     this.xUser = "All"
-    this.timeSheet = this.usersService.getTimesheets()  
-
+    if (this.usersService.timeSheet.length == 0){
+      this.usersService.timeSheet = this.usersService.getTimesheets()
+    }
+    this.timeSheet = this.usersService.timeSheet
   }
 
 activateUser(){
@@ -47,13 +49,10 @@ clearAll(){
   this.xUser = "All"
 }
 
-endShiftNow(index){
-  this.timeOut = new Date().toLocaleTimeString('en-US', { hour12: false, 
-                                             hour: "numeric", 
-                                             minute: "numeric"});
-
-  
-  this.usersService.timeSheet[2].timeout = this.timeOut
+endShiftNow(index, timein){
+  let exitTime = moment().format();
+  this.usersService.timeSheet[index].timeout = exitTime;
+  this.usersService.timeSheet[index].total = TotalDuration(timein, exitTime)
 }
 EditRef(index, timein, timeout){
   this.index = index
@@ -65,9 +64,9 @@ EditRef(index, timein, timeout){
 
 
 onSubmit(form){
-  this.timeSheet[this.xRow].timein = moment(form.timein).format()
-  this.timeSheet[this.xRow].timeout = moment(form.timeout).format()
-  this.timeSheet[this.xRow].total = TotalDuration(form.timein, form.timeout)
+  this.usersService.timeSheet[this.xRow].timein = moment(form.timein).format()
+  this.usersService.timeSheet[this.xRow].timeout = moment(form.timeout).format()
+  this.usersService.timeSheet[this.xRow].total = TotalDuration(form.timein, form.timeout)
 
   this.isedittrue = false
 
@@ -79,10 +78,7 @@ onEditCancel(){
   this.isedittrue = false
 }
 
-CalcTime(start, end){
- 
-  return Calc(start, end)
-}
+
 }
 
 
@@ -94,5 +90,5 @@ function Calc(y, x){
 
 
 function TotalDuration(timein, timeout) {
-  return moment.preciseDiff(moment(timein), moment(timeout))
+  return moment.preciseDiff(moment(timein).format('LLLL'), moment(timeout).format('LLLL'))
 }

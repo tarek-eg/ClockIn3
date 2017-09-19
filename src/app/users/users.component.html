@@ -1,20 +1,31 @@
+<app-right-sidebar [bugerBox]='true'>
+  <h2>Users</h2>
+  <div card-body style="padding-left:20px">
+
+  <app-add-user></app-add-user>
+
+  </div>
+</app-right-sidebar>
 
 <div>
  <section class="copm-back" >
     <div >
-      <p>
+      <div>
             <strong>Active</strong>
-      </p>
-
-      <br>
+   
+      <div *ngIf="userSelected" style="float: right;">
+        <button>Edit</button> <button>Delete</button>
+      </div>
+    </div>
+      <br><br>
     </div>
     <table id="example" class="table table-hover">
       <thead></thead>
 <tbody class="t-item" >
 
   <tr *ngFor= "let user of users"  data-toggle="modal" data-target=".bs-example-modal-lg">
-    <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
-    <td> <label><input type="checkbox"  class=""></label> </td>
+   
+    <td> <label><input name='statusGroup' type="checkbox" [(ngModel)]="hello"></label> </td>
       <td >
         <div>
             <span><span class="glyphicon glyphicon-user" style="color:cornflowerblue;padding-right: 11px;"></span></span>  {{ user.name }}

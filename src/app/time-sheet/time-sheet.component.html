@@ -1,34 +1,28 @@
 <app-right-sidebar [bugerBox]='true'>
-    <h2>Timesheet</h2>
-    <div card-body style="padding-left:20px">
-       
-            <app-add-shift></app-add-shift>
-            
-    </div>
-  </app-right-sidebar>
+  <h2>Timesheet</h2>
+  <div card-body style="padding-left:20px">
 
-  
+    <app-add-shift></app-add-shift>
+
+  </div>
+</app-right-sidebar>
+
+
 
 <div class="copm-back">
   Filter by User
   <select (click)="activateUser()" [(ngModel)]="xUser"> 
       <option selected>All</option>
       <option *ngFor="let user of timesheetsDB">{{user.username}}</option>
-  </select>
-  &emsp;&emsp;&emsp;&emsp;&emsp;
-  Filter by date
-  <input (click)="activateDate()" [(ngModel)]="xDate" type="date"> 
-  
-  &emsp;&emsp;
+  </select> &emsp;&emsp;&emsp;&emsp;&emsp; Filter by date
+  <input (click)="activateDate()" [(ngModel)]="xDate" type="date"> &emsp;&emsp;
   <a (click)="clearAll()">Clear Filters</a>
 
 </div>
 
 <div *ngIf="isedittrue" class="copm-back">
   <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms.value)">
-    <label>username</label> &emsp;&emsp;&emsp;&emsp;
-    From: &emsp; <input type="datetime-local"  name="timein" [(ngModel)]="timeIn"> &emsp;&emsp;
-    To: &emsp; <input type="datetime-local"  name="timeout" [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
+    <label>username</label> &emsp;&emsp;&emsp;&emsp; From: &emsp; <input type="datetime-local" name="timein" [(ngModel)]="timeIn">    &emsp;&emsp; To: &emsp; <input type="datetime-local" name="timeout" [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
     <button type="submit">Save</button>&emsp;
     <button (click)="onEditCancel()">Cancel</button>
   </form>
@@ -39,43 +33,45 @@
 
 
 <div>
- <section class="copm-back" >
-    <div >
+  <section class="copm-back">
+    <div>
       <p>
-            <strong>{{ xDate ? (xDate | date: fullDate) : 'All Timesheets'}}</strong>
+        <strong>{{ xDate ? (xDate | date: fullDate) : 'All Timesheets'}}</strong>
       </p>
 
       <br>
     </div>
     <table id="example" class="table table-hover">
       <thead></thead>
-<tbody class="t-item" >
+      <tbody class="t-item">
 
-  <tr *ngFor="let shift of timeSheet | timeFilter: xUser : xDate; let i = index"  >
-    <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
-      <td >
-        <div>
-            <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;"></span></span> {{ shift.username }}
-        </div>
-    </td>
+        <tr *ngFor="let shift of timeSheet | timeFilter: xUser : xDate; let i = index">
+          <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
+          <td>
+            <div>
+              <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;"></span></span> {{
+              shift.username }}
+            </div>
+          </td>
 
-     <td>{{ shift.timein | date:'HH:mm' }}</td>
+          <td>{{ shift.timein | date:'HH:mm' }}</td>
 
-     <td *ngIf="shift.timeout"> {{shift.timeout  | date:'HH:mm'  }}</td>
-     <td *ngIf="!shift.timeout"><button (click)="endShiftNow(shift.timein)">Edit shift</button> <td>
-    <td> {{ shift.date | date: fullDate}} </td>
-     <td> {{ shift.total }}</td>
-     <td><button (click)="EditRef(i, shift.timein, shift.timeout)">Edit</button> </td>
-     <td><button>Delete</button> </td>
+          <td *ngIf="shift.timeout"> {{shift.timeout | date:'HH:mm' }}</td>
+          <td *ngIf="!shift.timeout"><button (click)="endShiftNow(i, shift.timein)">Edit shift</button>
+            <td>
+              <td> {{ shift.date | date: fullDate}} </td>
+              <td> {{ shift.total }}</td>
+              <td><button (click)="EditRef(i, shift.timein, shift.timeout)">Edit</button> </td>
+              <td><button>Delete</button> </td>
 
-    </tr>
+        </tr>
 
-</tbody>
-</table>
+      </tbody>
+    </table>
 
-                         
-</section>
-  </div>
+
+  </section>
+</div>
 
 
 
@@ -84,7 +80,3 @@
 <app-editshift></app-editshift>
 </div>
 -->
-
- 
-
-    

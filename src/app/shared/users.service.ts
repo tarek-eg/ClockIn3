@@ -57,7 +57,7 @@ export class UsersService {
 }
   }
 
-  timeSheet
+  timeSheet= []
 
 
   getTimesheets(){
