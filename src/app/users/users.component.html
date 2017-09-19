@@ -13,7 +13,7 @@
       <div>
             <strong>Active</strong>
    
-      <div *ngIf="userSelected" style="float: right;">
+      <div *ngIf="!userSelected" style="float: right;">
         <button>Edit</button> <button>Delete</button>
       </div>
     </div>
@@ -23,9 +23,9 @@
       <thead></thead>
 <tbody class="t-item" >
 
-  <tr *ngFor= "let user of users"  data-toggle="modal" data-target=".bs-example-modal-lg">
-   
-    <td> <label><input name='statusGroup' type="checkbox" [(ngModel)]="hello"></label> </td>
+  <tr *ngFor= "let user of users; let i = index"  data-toggle="modal" data-target=".bs-example-modal-lg">
+
+    <td> <label><input (click)="onChange(i)" type="checkbox" [(ngModel)]="user.isChecked" ></label> </td>
       <td >
         <div>
             <span><span class="glyphicon glyphicon-user" style="color:cornflowerblue;padding-right: 11px;"></span></span>  {{ user.name }}
@@ -38,8 +38,8 @@
 
      <td >  {{user.jobtitle}}</td>
           <td >  {{user.email}}</td>
-    <td> <button (click)="deleteUser(user.name)">Delete</button></td>
-        <td> <button (click)=onSelect(user)>Edit</button></td>
+    <!-- <td> <button (click)="deleteUser(user.name)">Delete</button></td>
+        <td> <button (click)=onSelect(user)>Edit</button></td> -->
 
 
     </tr>

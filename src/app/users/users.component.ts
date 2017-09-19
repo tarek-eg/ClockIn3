@@ -12,21 +12,28 @@ import { Routes, Router, ActivatedRoute,ParamMap } from '@angular/router';
   styles: []
 })
 export class UsersComponent implements OnInit {
-
-  private users:Array<Account>
-  userSelected = false
+  userSelected: boolean = true
+  users
   user: User;
   private selectedId: number;
 
-  constructor(private _userservice: UsersService,
+  constructor(private usersService: UsersService,
               private router: Router ) {}
 
               
 
   ngOnInit() {
-    this.users = this._userservice.getUsers();    
-  
+    this.users = this.usersService.getUsers();    
+    
 
+}
+
+onChange(index){
+  if (this.users[index].isChecked == true){
+    this.userSelected = true
+  } else{
+    this.userSelected = false
+  }
 }
 
 
@@ -55,6 +62,7 @@ deleteUser(){
   this.users.push(new Account(5, "Khaled J", fname, lname, "HR", "1231231" , email))
   this.generatePassword()
 }
+
 }
 
 
