@@ -13,7 +13,7 @@ export class UsersComponent implements OnInit {
   isUserSelected: boolean = true
   users
   user: User;
-  private selectedId: number;
+  selectedId: number;
   userSelected: string;
 
   constructor(private usersService: UsersService,
@@ -26,25 +26,23 @@ export class UsersComponent implements OnInit {
 }
 
 onChange(index){
+  for (let i of this.users){
+    i.isChecked = false
+  }
+
   if (this.users[index].isChecked == true){
-    this.isUserSelected = true
-    console.log('Hi')
-    //this.userSelectedId      
+    this.isUserSelected = true  
+    this.selectedId = null  
   } else{
     this.isUserSelected = false    
     this.selectedId = index
-    console.log(index)
   }
 }
 
 
-onSelect(user) {  
-  this.user.id = 2
-  this.router.navigate(['/users', user.id]); 
-  // the user id is hard coded till we find a method to select the user from checkbox
-  // '2' should be user.id and passing user that checked in the method onSelect(user)
-  // the
-  // "Tarek Mostafa" 
+onSelect() {  
+  let id = this.selectedId
+  this.router.navigate(['/users', id]); 
 }
 
 isSelected(user: User) { 
