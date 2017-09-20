@@ -1,7 +1,56 @@
+ <div class="container-fluid">
 
-  <app-right-sidebar [bugerBox]='false'>
-    <h2>Time Clock</h2>
-  </app-right-sidebar>
+     <div class="row time-row">
+       <div class="col-md-10">
+          <h2>Time Clock</h2>
+       </div>
+
+  <div class="col-md-2">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-default" id="dropdownBasic1" ngbDropdownToggle>Actions</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1"  style="">
+
+       <p class="btn" (click)="toggle()" > + Add a Shift</p>
+<hr>
+      </div>
+    </div>
+
+
+
+
+
+<div [ngStyle] = "setStyle2()" class="ff">
+  <button class="btn btn-default" (click)="toggle()">x</button>
+  <div  style="    padding: 19px;">
+
+<h2>Add Shift</h2>
+
+<strong>Employee</strong><br>
+<p>The employee this shift is for. Select multiple employees to add one shift at once.</p>
+
+<select [(ngModel)]="selectedValue">
+  <option>Select Name</option>
+  <option *ngFor="let user of users" [ngValue]="user.name">{{user.name}}</option>
+</select>
+<br>
+<hr>
+
+<strong>Employee</strong><br>
+<input type="datetime-local" [(ngModel)]="shiftIn"><br>
+<input type="datetime-local" [(ngModel)]="shiftOut">
+<br><br>
+<button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
+
+
+
+  </div>
+</div>
+  </div>
+
+
+  </div>
+
+
 
 
 
@@ -11,8 +60,11 @@
     <p>The time is {{today | date:'EEEE'}}</p>
     <p>Finally the date and time is {{today | date:'short'}}</p>
   </div>` -->
- 
+ <div class="row">
+   <div class="col-md-12">
     <div class="copm-back">
+
+
       <div class="comp-margin">
         <h1 class="greeting">Happy {{today | date:'EEEE'}}, Cycler!</h1>
         <div>
@@ -31,3 +83,9 @@
 
       </div>
 </div>
+
+ </div>
+ </div>
+
+  </div>
+

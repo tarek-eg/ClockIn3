@@ -35,7 +35,7 @@ import { UserService } from './ServicesAPI/User.Service'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 
 import { MaterialModule } from './material.module' //AngularMaterial - KJ
- 
+  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
 
 
 @NgModule({
@@ -52,6 +52,7 @@ import { MaterialModule } from './material.module' //AngularMaterial - KJ
   ],
   imports: [
     BrowserModule,
+      NgbModule.forRoot(), 
     NoopAnimationsModule,
     UsersModule,
     TimeSheetModule,

@@ -10,12 +10,31 @@ require('moment-precise-range-plugin');
 @Component({
   selector: 'app-clock',
   templateUrl: './clock.component.html',
-  styles: []
+  styles: [`
+  .ff{
+     height: 100vh;
+      position: fixed;
+      z-index: 1;
+      top: 63;
+      right: 0;
+       background-color: rgba(250,252,254,.94);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 13px;
+      margin-top: 19px;
+
+}
+
+  `]
 })
 
 
 export class ClockComponent {
-  
+   some = true;
+  some2 = true;
+
+
+
   today 
   Wawa = setInterval(()=> this.today = new Date, 1000) //'2017-08-31 01:00 PM'
   xDuration
@@ -76,6 +95,31 @@ ngOnInit() {
     console.log("I'm goner!")
     clearInterval(this.timerInterval)
   }
+
+   setStyle2() {
+
+  let styles = {
+   'width.px': this.some ? '0' : '300',
+
+
+  };
+
+return styles;
+}
+
+
+
+
+
+toggle() {
+
+   this.some =!this.some;
+
+ }
+
+
+
+
 }
 
 function Calc(y, x) {
