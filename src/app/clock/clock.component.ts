@@ -72,6 +72,7 @@ khaledTest(){
 
 ngOnInit() {
   
+  localStorage.setItem('currentUser', 'Tarek Goda')
   this.today = new Date
   // retrieve timesheet to check if the user is online
   
