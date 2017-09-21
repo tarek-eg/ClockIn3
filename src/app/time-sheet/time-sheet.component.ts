@@ -3,7 +3,7 @@ import { UsersService } from '../shared/users.service';
 import { Router } from '@angular/router'
 var moment = require('moment');
 require('moment-precise-range-plugin');
-
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -15,6 +15,7 @@ require('moment-precise-range-plugin');
 
 })
 export class TimeSheetComponent  {
+   closeResult: string;
   xRow: number
   timeSheet 
   xUser
@@ -24,7 +25,7 @@ export class TimeSheetComponent  {
   timeIn
   timeOut
 
-  constructor(private usersService:UsersService, private router:Router) {
+  constructor(private usersService:UsersService, private router:Router, private modalService: NgbModal) {
     
    }
 
@@ -77,7 +78,23 @@ onEditCancel(){
  // this.timeOut = null
   this.isedittrue = false
 }
+ open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
 }
 
