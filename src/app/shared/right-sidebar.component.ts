@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef  } from '@angular/core';
+import { MdSidenav } from '@angular/material';
+import { EmitterService } from '../shared/emitter.service'
 
 @Component({
   selector: 'app-right-sidebar',
@@ -6,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 
 <md-toolbar style="background-color:#dddddd">
+
 <ng-content></ng-content>
 <span style="flex: 1 1 auto"></span>
 <button *ngIf="bugerBox" md-icon-button (click)="start.open()">
@@ -23,14 +26,24 @@ import { Component, OnInit, Input } from '@angular/core';
 </md-sidenav>
 
   `,
-  styles: []
+  styles: [],
+
 })
 export class RightSidebarComponent implements OnInit {
-
+  @ViewChild('start') public myNav: MdSidenav;
   @Input('bugerBox')bugerBox:boolean
-  constructor() { }
+ 
+
+  constructor(private emitterService:EmitterService ) { }
 
   ngOnInit() {
+    this.emitterService.closeSidebar$.subscribe(() =>this.myNav.close())
+   }
+
+
+  doHide(i){ 
+    console.log(i)
+    // this.myNav.close()
   }
 
 }

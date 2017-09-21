@@ -12,6 +12,7 @@ import { ClockComponent } from './clock/clock.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { UsersService } from './shared/users.service';
+import { EmitterService} from './shared/emitter.service'
 import { DatePipeComponent } from './shared/date.pipe';
 //import { MomentModule } from 'angular2-moment';
 import { SharedModule } from './shared/shared.module';
@@ -37,6 +38,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-ap
 import { MaterialModule } from './material.module' //AngularMaterial - KJ
   import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './register/register.component';  
+import { FlashMessagesModule } from 'angular2-flash-messages' // FlashMessages - KJ
 
 
 @NgModule({
@@ -47,6 +49,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     DatePipeComponent,
     RegisterComponent,
+    
     // AlertComponent,
     // LoginComponent2,
     // RegisterComponent,
@@ -55,6 +58,7 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     NgbModule.forRoot(), 
+    FlashMessagesModule,
     NoopAnimationsModule,
     UsersModule,
     TimeSheetModule,
@@ -63,10 +67,11 @@ import { RegisterComponent } from './register/register.component';
     HttpModule,
     FormsModule,
     SharedModule,
-    MaterialModule 
+    MaterialModule,
+    
 
   ],
-  providers: [UsersService,
+  providers: [UsersService, EmitterService,
   // AuthGuard,
   //       AlertService,
   //       AuthenticationService,

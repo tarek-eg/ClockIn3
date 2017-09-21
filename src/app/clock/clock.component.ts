@@ -33,7 +33,9 @@ export class ClockComponent {
    some = true;
   some2 = true;
 
-
+khaledTest(){
+  console.log("Hiiiiiiiiii")
+}
 
   today 
   Wawa = setInterval(()=> this.today = new Date, 1000) //'2017-08-31 01:00 PM'
