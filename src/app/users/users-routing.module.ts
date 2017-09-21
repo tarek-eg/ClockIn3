@@ -9,10 +9,8 @@ import { UsersHomeComponent } from './users-home.component';
 const routes: Routes = [
     { path:'users', component: UsersHomeComponent,
      children:[
-       {path: '', component:UsersComponent },
-       {path: ':id', component:UserProfileComponent},    
-    ]},
-    
+       {path: '', component:UsersComponent }]},
+    {path: 'users/:id', component: UserProfileComponent},     
 ]
 
 

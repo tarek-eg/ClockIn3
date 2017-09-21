@@ -13,6 +13,7 @@ import { TimeFilterPipe } from './time-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 import { MaterialModule } from '../material.module'
+import { FlashMessagesModule } from 'angular2-flash-messages' // FlashMessages - KJ
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { MaterialModule } from '../material.module'
     TimeSheetRoutingModule,
     FormsModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    FlashMessagesModule
   ],
   declarations: [TimeSheetComponent,
      AddShiftComponent,

@@ -1,9 +1,10 @@
 <app-right-sidebar [bugerBox]='true'>
-  <h2>Users</h2>
+  <h1>Users</h1>
   <div card-body style="padding-left:20px">
   <app-add-user></app-add-user>
   </div>
 </app-right-sidebar>
+<flash-messages></flash-messages>
 
 <div>
  <section class="copm-back" >
@@ -11,7 +12,7 @@
       <div>
           <strong>Active</strong>   
       <div *ngIf="!isUserSelected" style="float: right;">
-        <button (click)="onSelect()">Edit</button> <button>Delete</button>
+        <button (click)="onEdit()">Edit</button> <button>Delete</button>
       </div>
     </div>
       <br><br>
