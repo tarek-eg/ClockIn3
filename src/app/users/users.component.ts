@@ -29,7 +29,6 @@ onChange(index){
   for (let i of this.users){
     i.isChecked = false
   }
-
   if (this.users[index].isChecked == true){
     this.isUserSelected = true  
     this.selectedId = null  

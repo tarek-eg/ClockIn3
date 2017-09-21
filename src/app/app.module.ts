@@ -35,7 +35,8 @@ import { UserService } from './ServicesAPI/User.Service'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 
 import { MaterialModule } from './material.module' //AngularMaterial - KJ
-  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
+  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './register/register.component';  
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { MaterialModule } from './material.module' //AngularMaterial - KJ
     NotFoundComponent,
     LoginComponent,
     DatePipeComponent,
+    RegisterComponent,
     // AlertComponent,
     // LoginComponent2,
     // RegisterComponent,
@@ -52,7 +54,7 @@ import { MaterialModule } from './material.module' //AngularMaterial - KJ
   ],
   imports: [
     BrowserModule,
-      NgbModule.forRoot(), 
+    NgbModule.forRoot(), 
     NoopAnimationsModule,
     UsersModule,
     TimeSheetModule,
