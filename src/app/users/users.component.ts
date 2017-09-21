@@ -11,7 +11,7 @@ import { Routes, Router, ActivatedRoute,ParamMap } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   isUserSelected: boolean = true
-  users
+  users;
   user: User;
   selectedId: number;
   userSelected: string;
@@ -34,14 +34,18 @@ onChange(index){
     this.selectedId = null  
   } else{
     this.isUserSelected = false    
-    this.selectedId = index
+    this.selectedId = index.id
+    console.log(this.selectedId)
   }
 }
 
 
-onSelect() {  
+onEdit() {  
+  console.log(this.selectedId)
   let id = this.selectedId
-  this.router.navigate(['/users', id]); 
+  setTimeout(()=> {
+    this.router.navigate(['/users', '1']);
+  }, 1000);
 }
 
 isSelected(user: User) { 
