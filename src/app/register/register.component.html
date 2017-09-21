@@ -1,8 +1,39 @@
-<app-right-sidebar [bugerBox]='true'>
-    <h1>Register</h1>
+<app-right-sidebar>
+    <h1>Regsiter</h1>
     <div card-body style="padding-left:20px">
     </div>
   </app-right-sidebar>
-<p>
-  register works!
-</p>
+  <hr>    
+  <form  class="container">
+    <div class="form-group">
+      <label>Username</label>
+      <div >
+        <input type="text" name="username" class="form-control" autocomplete="off"
+         placeholder="*Username" />        
+          </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <div >
+          <input type="text" name="email" class="form-control" autocomplete="off"
+          placeholder="*Email" />          
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <div>
+            <input type="text" name="password" class="form-control" autocomplete="off"
+            placeholder="*Password"/>            
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirm">Confirm Password</label>
+            <div>
+              <input type="text" name="confirm" class="form-control" autocomplete="off"
+              placeholder="*Confirm Password"/>              
+              </div>
+          </div>
+          <input  type="submit" class="btn btn-primary" value="Submit"/>                    
+  </form>
+  
+  
