@@ -4,19 +4,19 @@
     </div>
   </app-right-sidebar>
   <hr>    
-  <form  class="container">
+  <form  class="container" #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
     <div class="form-group">
       <label>Username</label>
       <div >
-        <input type="text" name="username" class="form-control" autocomplete="off"
-         placeholder="*Username" />        
+        <input type="text" ngModel name="username" class="form-control" autocomplete="off"
+         placeholder="Username" />        
           </div>
     </div>
       <div class="form-group">
           <label for="password">Password</label>
           <div>
-            <input type="text" name="password" class="form-control" autocomplete="off"
-            placeholder="*Password"/>            
+            <input ngModel type="text" name="password" class="form-control" autocomplete="new-password"
+            placeholder="Password" type="password"/>            
             </div>
         </div>
           <input  type="submit" class="btn btn-primary" value="Submit"/>                    

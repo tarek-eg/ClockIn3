@@ -15,8 +15,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.users = this._userservice.getUsers();
-    
-    
+}
+
+login(form){
+  console.log(form.value)
 
 }
 }
