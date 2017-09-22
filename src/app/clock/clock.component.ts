@@ -67,16 +67,13 @@ export class ClockComponent {
   }
 
 ngOnInit() {
-  
-  localStorage.setItem('currentUser', 'Tarek Goda')
+  localStorage.clear()
+  localStorage.setItem('currentUser', 'Khaled Jamal')
   this.today = new Date
   // retrieve timesheet to check if the user is online
-  
-  if (this.usersService.timeSheet) {
 
-  } else {
-
-    this.usersService.timeSheet = this.usersService.getTimesheets()
+  if (this.usersService.timeSheet.length == 0) {
+     this.usersService.timeSheet = this.usersService.getTimesheets()
   }
 
   
@@ -148,7 +145,6 @@ function Timer(timein) {
 
 function isUserOnline(array, username): boolean {
   for (var i in array) {
-   
     if (array[i].username == username && array[i].timeout == "") {
       return true
     }
@@ -158,6 +154,7 @@ function isUserOnline(array, username): boolean {
 function OpenShift(array, username) {
   for (var i in array) {
     if (array[i].username == username && array[i].timeout == "") {
+      console.log("yes")
       return i
     }
   }
