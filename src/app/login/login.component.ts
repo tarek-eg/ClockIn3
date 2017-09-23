@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from '../shared/users.service';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -7,18 +8,29 @@ import { UsersService } from '../shared/users.service';
   templateUrl: './login.component.html',
   styles: []
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+errMessage:string = null
 
-  users = [];
+constructor(private _userservice: UsersService,
+            private router: Router) {}
 
-  constructor(private _userservice: UsersService) {}
-
-  ngOnInit() {
-    this.users = this._userservice.getUsers();
-}
 
 login(form){
-  console.log(form.value)
+  this.errMessage = null
+  let users = this._userservice.getUsers()
+  let user = users.find(user => user.name === form.value.username)
 
+  if(user == null){
+    this.errMessage = "User name is incorrect or not registered"
+  } else{
+    if (user.password === form.value.password){
+      localStorage.clear()
+      localStorage.setItem('currentUser', form.value.username)
+      this.router.navigate(['/'])  
+    } else{
+        this.errMessage = 'password is incorrect'
+    }
+  }
 }
+
 }

@@ -44,11 +44,11 @@ export class UsersService {
     // }
     
           return [ 
-            {"id": 1, "name": "Tarek Mostafa", "firstname": "Tarek", "lastname": "Mostafa", "jobtitle":"HR", "password": "T123456" , "email": "trkmos@yahoo.com", "isChecked": false},
-            {"id": 2, "name": "Khaled Jamal", "firstname": "Khaled", "lastname": "Jamal", "jobtitle":"HR", "password": "K123456" , "email": "khaledjamalhr@gmail.com", "isChecked": false},
-            {"id": 3, "name": "Mahmoud Sloma", "firstname": "Mahmoud", "lastname": "Slouma", "jobtitle":"IT", "password": "M123456" , "email": "amany.m@gmail.com", "isChecked": false},
-            {"id": 4, "name": "Osama Nour", "firstname": "Osama", "lastname": "Nour", "jobtitle":"IT", "password": "O123456" , "email": "Mrosamanour@gmail.com", "isChecked": false},
-            {"id": 5, "name": "Amany mhmd", "firstname": "Amany", "lastname": "Harb", "jobtitle":"IT", "password": "A123456" , "email": "mslouma@gmail.com", "isChecked": false}
+            {"id": 1, "name": "Tarek Mostafa", "firstname": "Tarek", "lastname": "Mostafa", "jobtitle":"HR", "password": "123" , "email": "trkmos@yahoo.com", "isChecked": false},
+            {"id": 2, "name": "Khaled Jamal", "firstname": "Khaled", "lastname": "Jamal", "jobtitle":"HR", "password": "123" , "email": "khaledjamalhr@gmail.com", "isChecked": false},
+            {"id": 3, "name": "Mahmoud Sloma", "firstname": "Mahmoud", "lastname": "Slouma", "jobtitle":"IT", "password": "123" , "email": "amany.m@gmail.com", "isChecked": false},
+            {"id": 4, "name": "Osama Nour", "firstname": "Osama", "lastname": "Nour", "jobtitle":"IT", "password": "123" , "email": "Mrosamanour@gmail.com", "isChecked": false},
+            {"id": 5, "name": "Amany mhmd", "firstname": "Amany", "lastname": "Harb", "jobtitle":"IT", "password": "123" , "email": "mslouma@gmail.com", "isChecked": false}
           ]
   // }
   // }

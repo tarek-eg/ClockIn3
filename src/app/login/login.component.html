@@ -1,9 +1,9 @@
-<app-right-sidebar>
+<!-- <app-right-sidebar>
     <h1>Login</h1>
     <div card-body style="padding-left:20px">
     </div>
   </app-right-sidebar>
-  <hr>    
+  <hr>     -->
   <form  class="container" #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
     <div class="form-group">
       <label>Username</label>
@@ -23,5 +23,6 @@
            <a routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}" routerLink='/register'>Register</a>                
   </form>
+  <div *ngIf="errMessage"> {{ errMessage }}</div>
   
   
