@@ -15,6 +15,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 })
 export class TimeSheetComponent  {
+  
+  some2 = true;
+
    closeResult: string;
   xRow: number
   timeSheet 
@@ -96,6 +99,24 @@ onEditCancel(){
     }
   }
 
+  setStyle1() {
+
+  let styles = {
+   'width.px': this.some2 ? '0' : '300',
+
+
+  };
+
+return styles;
+}
+
+
+toggle1() {
+
+   this.some2 =!this.some2;
+
+ }
+   
 
 }
 

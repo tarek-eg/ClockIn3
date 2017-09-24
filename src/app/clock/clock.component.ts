@@ -10,22 +10,7 @@ require('moment-precise-range-plugin');
 @Component({
   selector: 'app-clock',
   templateUrl: './clock.component.html',
-  styles: [`
-  .ff{
-     height: 100vh;
-      position: fixed;
-      z-index: 1;
-      top: 63;
-      right: 0;
-       background-color: rgba(250,252,254,.94);
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 13px;
-      margin-top: 19px;
-
-}
-
-  `]
+  styles: []
 })
 
 
