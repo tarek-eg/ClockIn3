@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'time-sheet', loadChildren:'app/time-sheet/time-sheet.module#TimeSheetModule'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: '', component: AppComponent}, //redirectTo:'/clock', pathMatch: 'full' },
+  { path: '', redirectTo:'/clock', pathMatch: 'full' },
   { path:'**', component: NotFoundComponent}
 ];
 
