@@ -16,29 +16,38 @@
 </app-right-sidebar>-->
 <flash-messages></flash-messages>
 
+<<<<<<< HEAD
 <div class="row">
   <div class="col-md-12">
+=======
+
+<div>
+>>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
  <section class="copm-back" >
     <div >
       <div>
           <strong>Active</strong>   
       <div *ngIf="!isUserSelected" style="float: right;">
-        <button (click)="onEdit()">Edit</button> <button>Delete</button>
+        <button (click)="onEdit()">Edit</button>
+         <button (click)='onDeleteUserDialog(content)'>Delete</button>
       </div>
     </div>
+    
       <br><br>
     </div>
+
     <table id="example" class="table table-hover">
       <thead></thead>
     <tbody class="t-item" >
   <tr *ngFor= "let user of users; let i = index"
     data-toggle="modal" data-target=".bs-example-modal-lg">
     <td> <label><input (click)="onChange(i)" type="checkbox" 
-      [(ngModel)]="user.isChecked" ></label> </td>
+      [(ngModel)]="user.isChecked" 
+      (change)="$event.target.checked? (user.isChecked = true) : (user.isChecked = false)"></label> </td>
       <td >
         <div>
             <span><span class="glyphicon glyphicon-user" 
-              style="color:cornflowerblue;padding-right: 11px;"></span></span>  {{ user.name }}
+              style="color:#2767D6;padding-right: 11px;"></span></span>  {{ user.name }}
         </div>
       </td>
         <td>{{user.firstname}}</td>
@@ -55,6 +64,7 @@
 </div>
 
 
+<<<<<<< HEAD
 <!-- <div  class="copm-back">
   <app-add-user></app-add-user>
 </div>
@@ -67,3 +77,26 @@
 
 
 </div><!--end container-fluid-->
+=======
+<!--start model-->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div  style="    padding: 16px;">
+    <div class="modal-header">    
+      <button type="button" class="close"  
+      style="font-size: 19px;margin-left: auto;" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="font-size: 15px;">
+      <p>Are you sure you want to delete this user  ?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-lg btn-outline-dark" (click)="c('Close click')">Close</button>
+      <button type="button" class="btn btn-lg btn-danger">Delete</button>
+    </div>
+    </div>
+  </ng-template>
+  
+  <!--end model-->
+  
+>>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c

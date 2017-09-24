@@ -1,35 +1,29 @@
- 
- 
  <div class="container-fluid">
-
-  
-
      <div class="row time-row">
        <div class="col-md-10">
           <h1>Time Clock</h1>
        </div>
-
   <div class="col-md-2">
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-default" id="dropdownBasic1" ngbDropdownToggle>Actions</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
-
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1"  style="">
        <p class="btn" (click)="toggle()" > + Add a Shift</p>
 <hr> 
       </div>
     </div>
+<<<<<<< HEAD
     
 
 
 
 
+=======
+>>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
 <div [ngStyle] = "setStyle2()" class="ff">
   <button class="btn btn-default" (click)="toggle()">x</button>
   <div  style="    padding: 19px;">
-
 <h2>Add Shift</h2>
-
 <strong>Employee</strong><br>
 <p>The employee this shift is for. Select multiple employees to add one shift at once.</p>
 
@@ -39,21 +33,15 @@
 </select>
 <br>
 <hr>
-
 <strong>Employee</strong><br>
 <input type="datetime-local" [(ngModel)]="shiftIn"><br>
 <input type="datetime-local" [(ngModel)]="shiftOut">
 <br><br>
 <button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
-
-
-
-  </div>
 </div>
-  </div>
-
-
-  </div>
+</div>
+</div>
+</div>
 
 
 
@@ -71,7 +59,7 @@
 
 
       <div class="comp-margin">
-        <h1 class="greeting">Happy {{today | date:'EEEE'}}, Cycler!</h1>
+        <h1 class="greeting">Happy {{today | date:'EEEE'}}, {{user}}!</h1>
         <div>
           <h3 class="current-time">It's currently {{today | date:'hh:mm'}}</h3>
           <p *ngIf="!_shiftStart" class="current-time">Total time worked <strong><i>{{ xDuration}}</i></strong></p>

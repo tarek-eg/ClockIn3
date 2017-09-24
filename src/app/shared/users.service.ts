@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import "rxjs/add/operator/map"
 
 export class User{
-  constructor(public id: number, public name: string, public gender: string) { }
+  constructor(public id: number, public name: string, public gender: string, public isChecked?: boolean) { }
 }
 
 export class xUser{

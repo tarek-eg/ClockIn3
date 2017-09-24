@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService, User } from '../shared/users.service';
 import { Routes, Router, ActivatedRoute,ParamMap } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -12,12 +14,15 @@ import { Routes, Router, ActivatedRoute,ParamMap } from '@angular/router';
 export class UsersComponent implements OnInit {
   isUserSelected: boolean = true
   users;
-  user: User;
+  user: User[];
   selectedId: number;
   userSelected: string;
+  closeResult: string;
 
   constructor(private usersService: UsersService,
-              private router: Router ) {}
+              private router: Router,
+              private modalService: NgbModal
+             ) {}
 
               
 
@@ -39,6 +44,16 @@ onChange(index){
   }
 }
 
+// isUserChecked(user){
+//   for(let i of this.users){
+//     if(!i.ischecked){
+//       console.log(`user ${i.firstname} checked`)
+//      return this.usersService.getUsers().slice(user)
+//     }else{
+//       console.log('hi')
+//     }
+//   }
+// }
 
 onEdit() {  
   console.log(this.selectedId)
@@ -62,7 +77,7 @@ isEmailDuplicate(){
   // to check if the email is duplicate
 }
 
-deleteUser(){  
+deleteUser(){
 }
 
   addUser(fname, lname, email){
@@ -71,8 +86,27 @@ deleteUser(){
   this.generatePassword()
 }
 
+// This function opens the modal dialog 'Tarek'
+onDeleteUserDialog(content) {
+  this.modalService.open(content).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
 }
 
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+  }
+}
+
+
+}
 
 
 
