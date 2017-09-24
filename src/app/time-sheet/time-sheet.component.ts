@@ -13,14 +13,14 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styles: [],
 })
 export class TimeSheetComponent  {
-<<<<<<< HEAD
+
   
   some2 = true;
 
    closeResult: string;
-=======
-  closeResult: string;
->>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
+
+ /// closeResult: string;
+
   xRow: number
   timeSheet 
   xUser
@@ -103,7 +103,7 @@ onEditCancel(){
       return  `with: ${reason}`;
     }
   }
-<<<<<<< HEAD
+
 
   setStyle1() {
 
@@ -123,12 +123,12 @@ toggle1() {
 
  }
    
-=======
+
   
   deleteShift(){
     
   }
->>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
+
 
 }
 
