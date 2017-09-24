@@ -11,11 +11,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-time-sheet',
   templateUrl: './time-sheet.component.html',
   styles: [],
-  
-
 })
 export class TimeSheetComponent  {
-   closeResult: string;
+  closeResult: string;
   xRow: number
   timeSheet 
   xUser
@@ -24,10 +22,13 @@ export class TimeSheetComponent  {
   isedittrue:boolean = false
   timeIn
   timeOut
+  
 
-  constructor(private usersService:UsersService, private router:Router, private modalService: NgbModal) {
-    
-   }
+  constructor(
+    private usersService:UsersService, 
+    private router:Router, 
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit() {
     this.xUser = "All"
@@ -68,7 +69,6 @@ onSubmit(form){
   this.usersService.timeSheet[this.xRow].timein = moment(form.timein).format()
   this.usersService.timeSheet[this.xRow].timeout = moment(form.timeout).format()
   this.usersService.timeSheet[this.xRow].total = TotalDuration(form.timein, form.timeout)
-
   this.isedittrue = false
 
 }
@@ -78,6 +78,7 @@ onEditCancel(){
  // this.timeOut = null
   this.isedittrue = false
 }
+
  open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -95,7 +96,10 @@ onEditCancel(){
       return  `with: ${reason}`;
     }
   }
-
+  
+  deleteShift(){
+    
+  }
 
 }
 
@@ -110,3 +114,4 @@ function Calc(y, x){
 function TotalDuration(timein, timeout) {
   return moment.preciseDiff(moment(timein).format('LLLL'), moment(timeout).format('LLLL'))
 }
+

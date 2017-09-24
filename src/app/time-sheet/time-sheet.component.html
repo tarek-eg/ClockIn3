@@ -1,21 +1,11 @@
-
-
 <div class="container-fluid">
-
-
 <app-right-sidebar [bugerBox]='true'>
-  <h1>Timesheet</h1>
-  
+  <h1>Timesheet</h1>  
   <div card-body style="padding-left:20px">
-
     <app-add-shift></app-add-shift>
-
   </div>
 </app-right-sidebar>
-
 <flash-messages></flash-messages>
-
-
 <div class="row">
   <div class="col-md-12">
 <div class="copm-back">
@@ -29,23 +19,20 @@
 </div>
 </div>
 </div>
-
-
 <div class="row">
   <div class="col-md-12">
 <div *ngIf="isedittrue" class="copm-back">
   <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms.value)">
-    <label>username</label> &emsp;&emsp;&emsp;&emsp; From: &emsp; <input type="datetime-local" name="timein" [(ngModel)]="timeIn">    &emsp;&emsp; To: &emsp; <input type="datetime-local" name="timeout" [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
+    <label>username</label> &emsp;&emsp;&emsp;&emsp; From: &emsp;
+     <input type="datetime-local" name="timein" [(ngModel)]="timeIn">
+         &emsp;&emsp; To: &emsp; <input type="datetime-local" name="timeout"
+          [(ngModel)]="timeOut"> &emsp;&emsp;&emsp;&emsp;
     <button type="submit">Save</button>&emsp;
     <button (click)="onEditCancel()">Cancel</button>
   </form>
-
-</div>
-
 </div>
 </div>
-
-
+</div>
 <div class="row">
   <div class="col-md-12">
 <div>
@@ -54,7 +41,6 @@
       <p>
         <strong>{{ xDate ? (xDate | date: fullDate) : 'All Timesheets'}}</strong>
       </p>
-
       <br>
     </div>
     <table id="example" class="table table-hover">
@@ -65,13 +51,11 @@
           <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
           <td>
             <div>
-              <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;"></span></span> {{
-              shift.username }}
+              <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;">
+                </span></span> {{shift.username }}
             </div>
           </td>
-
           <td>{{ shift.timein | date:'HH:mm' }}</td>
-
           <td *ngIf="shift.timeout"> {{shift.timeout | date:'HH:mm' }}</td>
           <td *ngIf="!shift.timeout"><button (click)="endShiftNow(i, shift.timein)">Edit shift</button>
             <td>
@@ -79,18 +63,13 @@
               <td> {{ shift.total }}</td>
               <td><button (click)="EditRef(i, shift.timein, shift.timeout)">Edit</button> </td>
               <td><button type="button" (click)="open(content)">Delete</button> </td>
-
         </tr>
-
       </tbody>
     </table>
-
-
   </section>
 </div>
 </div>
 </div>
-
 </div>
 
 <!--
@@ -106,7 +85,8 @@
   <div  style="    padding: 16px;">
   <div class="modal-header" >
   
-    <button type="button" class="close"  style="font-size: 19px;margin-left: auto;" aria-label="Close" (click)="d('Cross click')">
+    <button type="button" class="close"  
+    style="font-size: 19px;margin-left: auto;" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
