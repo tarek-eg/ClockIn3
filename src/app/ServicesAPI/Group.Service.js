@@ -14,60 +14,30 @@ var http_2 = require("@angular/http");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/toPromise");
+var Group_1 = require("./Group");
 var GroupService = (function () {
     function GroupService(_http) {
         this._http = _http;
         this.headers = new http_2.Headers({ 'Content-Type': 'application/json' });
-        this.groupsUrl = 'api/groups'; // URL to web api
-        //this.baseUrl ="http://cyclock.mbde3on.com/";
-        //this.baseUrl ="http://localhost:44089/api/group/";
+        this.groupsUrl = 'http://cyclockapi.mbde3on.com/api/group/'; //'api/groups';  // URL to web api
+        this.groupsUrlAdd = 'http://cyclockapi.mbde3on.com/api/group/AddGroup'; //'http://localhost:44089/api/group/AddGroup';
+        this.groupsUrlEdit = 'http://cyclockapi.mbde3on.com/api/group/EditGroup';
     }
-    /********* From Hero Editor **************/
-    GroupService.prototype.getAllGroups = function () {
-        return this._http.get(this.groupsUrl)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
-            .catch(this.handleError);
+    GroupService.prototype.AddGroup = function (group) {
+        var _this = this;
+        var headers = new http_2.Headers();
+        headers.append('Content-Type', 'application/json');
+        this._http.post(this.groupsUrlAdd, JSON.stringify({ GroupName: group.GroupName }), { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) { _this.postResponse = res; console.log(res); });
     };
-    GroupService.prototype.update = function (hero) {
-        var url = this.groupsUrl + "/" + hero.GroupID;
-        return this._http
-            .put(url, JSON.stringify(hero), { headers: this.headers })
-            .toPromise()
-            .then(function () { return hero; })
-            .catch(this.handleError);
-    };
-    GroupService.prototype.delete = function (id) {
-        var url = this.groupsUrl + "/" + id;
-        return this._http.delete(url, { headers: this.headers })
-            .toPromise()
-            .then(function () { return null; })
-            .catch(this.handleError);
-    };
-    GroupService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    };
-    /*************************/
-    GroupService.prototype.getGroupsWithPromise = function () {
-        return this._http.get(this.groupsUrl).toPromise()
-            .then(this.extractData)
-            .catch(this.handleErrorPromise);
-    };
-    GroupService.prototype.addGroupWithPromise = function (book) {
-        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_2.RequestOptions({ headers: headers });
-        return this._http.post(this.groupsUrl, book, options).toPromise()
-            .then(this.extractData)
-            .catch(this.handleErrorPromise);
-    };
-    GroupService.prototype.extractData = function (res) {
-        var body = res.json();
-        return body.data || {};
-    };
-    GroupService.prototype.handleErrorPromise = function (error) {
-        console.error(error.message || error);
-        return Promise.reject(error.message || error);
+    GroupService.prototype.DeleteGroup = function (id) {
+        var headers = new http_2.Headers();
+        this._http.delete('http://cyclockapi.mbde3on.com/api/group/Delete/?id=' + id, new http_2.RequestOptions({
+            headers: headers,
+            body: Group_1.Group
+        }))
+            .subscribe(function (ok) { console.log(ok); });
     };
     return GroupService;
 }());
@@ -76,4 +46,4 @@ GroupService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], GroupService);
 exports.GroupService = GroupService;
-//# sourceMappingURL=Group.Service.js.map
+//# sourceMappingURL=Group.service.js.map

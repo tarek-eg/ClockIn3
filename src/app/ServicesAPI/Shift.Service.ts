@@ -13,15 +13,42 @@ import {Shift} from './Shift';
 export class ShiftService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private ShiftsUrl = 'api/Shifts';  // URL to web api
+  private ShiftsUrl ='http://cyclockapi.mbde3on.com/api/Shift/';//'api/groups';  // URL to web api
+  private ShiftsUrlAdd = 'http://cyclockapi.mbde3on.com/api/Shift/AddShift'; 
+  private ShiftsUrlEdit ='http://cyclockapi.mbde3on.com/api/Shift/EditShift';
+  
 
-    baseUrl:string;
 constructor(private _http : Http){
- //this.baseUrl ="http://cyclock.mbde3on.com/";
- //this.baseUrl ="http://localhost:44089/api/Shift/";
+ 
 }
 
+
+AddShift(shift:Shift){
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  this._http.post(this.ShiftsUrlAdd, 
+                         JSON.stringify({EndTime:shift.EndTime , IsDeleted:shift.IsDeleted ,
+                          ShiftDate:shift.ShiftDate ,ShiftPeriodMin:shift.ShiftPeriodMin ,
+                          StartTime:shift.StartTime ,UserID :shift.UserID }),
+                         {headers:headers})
+  .map((res: Response) => res.json())
+  .subscribe((res:Shift) => { this.postResponse = res; console.log(res); });
+}
+
+DeleteShift(id:number){
+  var headers = new Headers();
+  this._http.delete('http://cyclockapi.mbde3on.com/api/Shift/Delete/?id='+id, new RequestOptions({
+    headers: headers,
+    body: Shift
+ }))
+ .subscribe((ok)=>{console.log(ok)});
+}
+
+
+
+
 /********* From Hero Editor **************/
+  /*
   getAllShifts(): Promise<Shift[]> {
     return this._http.get(this.ShiftsUrl)
                .toPromise()
@@ -50,8 +77,9 @@ constructor(private _http : Http){
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
+*/
   /*************************/
+  /*
    getShiftsWithPromise(): Promise<Shift[]> {
         return this._http.get(this.ShiftsUrl).toPromise()
 		    .then(this.extractData)

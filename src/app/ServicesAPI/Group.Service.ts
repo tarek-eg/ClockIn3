@@ -13,15 +13,71 @@ import {Group} from './Group';
 export class GroupService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private groupsUrl = 'api/groups';  // URL to web api
-
-    baseUrl:string;
-constructor(private _http : Http){
- //this.baseUrl ="http://cyclock.mbde3on.com/";
- //this.baseUrl ="http://localhost:44089/api/group/";
+  private groupsUrl ='http://cyclockapi.mbde3on.com/api/group/';//'api/groups';  // URL to web api
+  private groupsUrlAdd = 'http://cyclockapi.mbde3on.com/api/group/AddGroup'; //'http://localhost:44089/api/group/AddGroup';
+  private groupsUrlEdit ='http://cyclockapi.mbde3on.com/api/group/EditGroup';
+  
+  constructor(private _http : Http){
+ 
 }
 
+AddGroup(group:Group){
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  this._http.post(this.groupsUrlAdd, 
+                         JSON.stringify({GroupName:group.GroupName}),
+                         {headers:headers})
+  .map((res: Response) => res.json())
+  .subscribe((res:Group) => { this.postResponse = res; console.log(res); });
+}
+
+DeleteGroup(id:number){
+  var headers = new Headers();
+  this._http.delete('http://cyclockapi.mbde3on.com/api/group/Delete/?id='+id, new RequestOptions({
+    headers: headers,
+    body: Group
+ }))
+ .subscribe((ok)=>{console.log(ok)});
+}
+
+
+/*
+ put(hero: Group) {
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  let url = `${this.groupsUrlEdit}/${hero.GroupID}`;
+console.log(url);
+  return this._http
+             .put(url, JSON.stringify(hero), {headers: headers})
+             .map(res => res.json())
+             .subscribe((res:Group) => { this.postResponse = res; console.log(res); });
+             
+}
+
+addComment (body: Object): Observable<Group[]> {
+  let bodyString = JSON.stringify(body); // Stringify payload
+  let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+  let options       = new RequestOptions({ headers: headers }); // Create a request option
+
+  return this._http.post(this.groupsUrlAdd, body, options) // ...using post request
+                   .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+                   .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+}   
+
+ // Update a comment
+ updateComment (body: Object): Observable<Group[]> {
+  let bodyString = JSON.stringify(body); // Stringify payload
+  let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+  let options       = new RequestOptions({ headers: headers }); // Create a request option
+
+  return this._http.put(`${this.groupsUrlEdit}/${body['id']}`, body, options) // ...using put request
+                   .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+                   .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+}  
+*/
 /********* From Hero Editor **************/
+/*
   getAllGroups(): Promise<Group[]> {
     return this._http.get(this.groupsUrl)
                .toPromise()
@@ -50,8 +106,9 @@ constructor(private _http : Http){
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
+*/
   /*************************/
+  /*
    getGroupsWithPromise(): Promise<Group[]> {
         return this._http.get(this.groupsUrl).toPromise()
 		    .then(this.extractData)
@@ -61,7 +118,7 @@ constructor(private _http : Http){
   addGroupWithPromise(book:Group): Promise<Group> {
 	    let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http.post(this.groupsUrl, book, options).toPromise()
+        return this._http.post(this.groupsUrlAdd, book, options).toPromise()
 		           .then(this.extractData)
                    .catch(this.handleErrorPromise);
   }		
@@ -73,14 +130,15 @@ constructor(private _http : Http){
 private handleErrorPromise (error: Response | any) {
 		console.error(error.message || error);
 		return Promise.reject(error.message || error);
-    }	
+    }
+    	
 /************************/
 
    /*  getAllGroups()
     {
     return this._http.get(this.baseUrl ).map(res=>res.json()).catch(this.handleError);  
     } 
-
+/*
     getGroupById(id : number)
     {
     return this._http.get(this.baseUrl + id).map(res=>res.json());  

@@ -6,7 +6,7 @@ export class User {
   Password: string;
   UserColor: string;
   UserLogo: string;
-  HourRate: number;
-  IsAdmin: boolean
-  IsDeleted: boolean
+   HourRate : number;
+    IsAdmin : boolean;
+    IsDeleted : boolean;
 }

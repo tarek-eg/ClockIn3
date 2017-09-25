@@ -14,50 +14,33 @@ var http_2 = require("@angular/http");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/toPromise");
+var User_1 = require("./User");
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
         this.headers = new http_2.Headers({ 'Content-Type': 'application/json' });
-        this.usersUrl = 'api/users'; // URL to web api
+        this.usersUrl = 'http://cyclockapi.mbde3on.com/api/User/'; //'api/groups';  // URL to web api
+        this.usersUrlAdd = 'http://cyclockapi.mbde3on.com/api/User/AddUser';
+        this.usersUrlEdit = 'http://cyclockapi.mbde3on.com/api/user/EditUser';
     }
-    /********* From Hero Editor **************/
-    UserService.prototype.getAllusers = function () {
-        return this._http.get(this.usersUrl)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
-            .catch(this.handleError);
+    UserService.prototype.AddUser = function (user) {
+        var _this = this;
+        var headers = new http_2.Headers();
+        headers.append('Content-Type', 'application/json');
+        this._http.post(this.usersUrlAdd, JSON.stringify({ UserName: user.UserName, GroupID: user.GroupID,
+            LoginName: user.LoginName, Password: user.Password, UserColor: user.UserColor,
+            UserLogo: user.UserLogo, HourRate: user.HourRate,
+            IsAdmin: user.IsAdmin, IsDeleted: user.IsDeleted }), { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) { _this.postResponse = res; console.log(res); });
     };
-    UserService.prototype.delete = function (id) {
-        var url = this.usersUrl + "/" + id;
-        return this._http.delete(url, { headers: this.headers })
-            .toPromise()
-            .then(function () { return null; })
-            .catch(this.handleError);
-    };
-    UserService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    };
-    /*************************/
-    UserService.prototype.getUsersWithPromise = function () {
-        return this._http.get(this.usersUrl).toPromise()
-            .then(this.extractData)
-            .catch(this.handleErrorPromise);
-    };
-    UserService.prototype.addUserWithPromise = function (book) {
-        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_2.RequestOptions({ headers: headers });
-        return this._http.post(this.usersUrl, book, options).toPromise()
-            .then(this.extractData)
-            .catch(this.handleErrorPromise);
-    };
-    UserService.prototype.extractData = function (res) {
-        var body = res.json();
-        return body.data || {};
-    };
-    UserService.prototype.handleErrorPromise = function (error) {
-        console.error(error.message || error);
-        return Promise.reject(error.message || error);
+    UserService.prototype.DeleteUser = function (id) {
+        var headers = new http_2.Headers();
+        this._http.delete('http://cyclockapi.mbde3on.com/api/User/Delete/?id=' + id, new http_2.RequestOptions({
+            headers: headers,
+            body: User_1.User
+        }))
+            .subscribe(function (ok) { console.log(ok); });
     };
     return UserService;
 }());
@@ -66,4 +49,4 @@ UserService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], UserService);
 exports.UserService = UserService;
-//# sourceMappingURL=User.Service.js.map
+//# sourceMappingURL=User.service.js.map
