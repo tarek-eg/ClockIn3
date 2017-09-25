@@ -1,69 +1,10 @@
 <div class="container-fluid">
-<<<<<<< HEAD
-
-   <div class="row time-row">
-       <div class="col-md-10">
-          <h1>Time Clock</h1>
-       </div>
-
-  <div class="col-md-2">
-    <div >
-      <button class="btn" (click)="toggle1()">Actions</button>
-     
-
-    <!--start side bar-->
-<div [ngStyle] = "setStyle1()" class="ff">
-  <button class="btn btn-default" (click)="toggle1()">x</button>
-  <div  style="    padding: 19px;">
-
-<h2>Add Shift</h2>
-
-<strong>Employee</strong><br>
-<p>The employee this shift is for. Select multiple employees to add one shift at once.</p>
-
-<select [(ngModel)]="selectedValue">
-  <option>Select Name</option>
-  <option *ngFor="let user of users" [ngValue]="user.name">{{user.name}}</option>
-</select>
-<br>
-<hr>
-
-<strong>Employee</strong><br>
-<input type="datetime-local" [(ngModel)]="shiftIn"><br>
-<input type="datetime-local" [(ngModel)]="shiftOut">
-<br><br>
-<button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
-
-  </div></div>
-<!--end side bar-->
- 
-
-
-  </div>
-
-
-  </div>
-
-
-
-     </div><!--end row-->
-
-<!--<app-right-sidebar [bugerBox]='true'>
-  <h1>Timesheet</h1>
-  
-=======
 <app-right-sidebar [bugerBox]='true'>
   <h1>Timesheet</h1>  
->>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
   <div card-body style="padding-left:20px">
     <app-add-shift></app-add-shift>
   </div>
-<<<<<<< HEAD
-</app-right-sidebar>-->
-
-=======
 </app-right-sidebar>
->>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
 <flash-messages></flash-messages>
 <div class="row">
   <div class="col-md-12">
@@ -129,14 +70,7 @@
 </div>
 </div>
 </div>
-<<<<<<< HEAD
-
-</div><!-- end container-fluid-->
-
-
-=======
 </div>
->>>>>>> 613bd6d7fb237b16167b608ea083c21fa78a834c
 
 <!--
   <div  class="copm-back">
