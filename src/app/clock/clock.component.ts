@@ -78,24 +78,14 @@ ngOnInit() {
   }
 
    setStyle2() {
-
   let styles = {
    'width.px': this.some ? '0' : '300',
-
-
   };
-
 return styles;
 }
 
-
-
-
-
 toggle() {
-
    this.some =!this.some;
-
  }
 
 

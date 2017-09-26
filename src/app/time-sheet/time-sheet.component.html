@@ -1,10 +1,27 @@
 <div class="container-fluid">
-<app-right-sidebar [bugerBox]='true'>
-  <h1>Timesheet</h1>  
-  <div card-body style="padding-left:20px">
-    <app-add-shift></app-add-shift>
+  
+  <div class="row time-row">
+       <div class="col-md-10">
+  <h1>Timesheet</h1> 
+
   </div>
-</app-right-sidebar>
+
+  <div class="col-md-2">
+
+
+<button class="btn btn-default" (click)="toggle1()">Action</button>
+
+<div [ngStyle] = "setStyle1()" class="ff">
+  <button class="btn btn-default" (click)="toggle1()">x</button>
+
+  <app-add-shift></app-add-shift>
+
+ </div>
+  </div>
+  </div>
+
+
+
 <flash-messages></flash-messages>
 <div class="row">
   <div class="col-md-12">
@@ -14,8 +31,10 @@
       <option selected>All</option>
       <option *ngFor="let user of timesheetsDB">{{user.username}}</option>
   </select> &emsp;&emsp;&emsp;&emsp;&emsp; Filter by date
+
   <input (click)="activateDate()" [(ngModel)]="xDate" type="date"> &emsp;&emsp;
   <a (click)="clearAll()">Clear Filters</a>
+
 </div>
 </div>
 </div>

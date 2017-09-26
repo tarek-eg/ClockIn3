@@ -1,4 +1,4 @@
-<div [ngStyle] = "setStyle1()" class="ff">
+<!---<div [ngStyle] = "setStyle1()" class="ff">
   <button class="btn btn-default" (click)="toggle1()">x</button>
   <div  style="    padding: 19px;">
 
@@ -20,4 +20,30 @@
 <br><br>
 <button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
 
-  </div></div>
+  </div></div>-->
+
+
+
+
+
+   <div  style="    padding: 19px;">
+
+<h2>Add Shift</h2>
+
+<strong>Employee</strong><br>
+<p>The employee this shift is for. Select multiple employees to add one shift at once.</p>
+
+<select [(ngModel)]="selectedValue">
+  <option>Select Name</option>
+  <option *ngFor="let user of users" [ngValue]="user.name">{{user.name}}</option>
+</select>
+<br>
+<hr>
+
+<strong>Employee</strong><br>
+<input type="datetime-local" [(ngModel)]="shiftIn"><br>
+<input type="datetime-local" [(ngModel)]="shiftOut">
+<br><br>
+<button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
+
+  </div>
