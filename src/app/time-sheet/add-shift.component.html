@@ -28,12 +28,12 @@
 
    <div  style="    padding: 19px;">
 
-<h2>Add Shift</h2>
+<h2 class="side-font">Add Shift</h2>
 
-<strong>Employee</strong><br>
-<p>The employee this shift is for. Select multiple employees to add one shift at once.</p>
+<p class="employee-p">Employee</p><br>
+<p class="employee-p1">The employee this shift is for. Select multiple employees to add one shift at once.</p>
 
-<select [(ngModel)]="selectedValue">
+<select [(ngModel)]="selectedValue" class="form-control">
   <option>Select Name</option>
   <option *ngFor="let user of users" [ngValue]="user.name">{{user.name}}</option>
 </select>
@@ -41,9 +41,11 @@
 <hr>
 
 <strong>Employee</strong><br>
-<input type="datetime-local" [(ngModel)]="shiftIn"><br>
-<input type="datetime-local" [(ngModel)]="shiftOut">
+<input type="datetime-local" [(ngModel)]="shiftIn" class="form-control"><br>
+<input type="datetime-local" [(ngModel)]="shiftOut" class="form-control">
 <br><br>
-<button (click)="AddShift(selectedValue, shiftIn, shiftOut)">Save</button>
+<button (click)="AddShift(selectedValue, shiftIn, shiftOut)" class="btn btn-primary btn-lg"
+ style="margin-left: 85px; 
+    padding: 7px 20px" >Save</button>
 
   </div>

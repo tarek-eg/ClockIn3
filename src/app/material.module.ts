@@ -31,7 +31,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MdProgressBarModule,
     MdProgressSpinnerModule, MdMenuModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule  ///important for datepicker
   ],
   declarations: [],
   exports: [

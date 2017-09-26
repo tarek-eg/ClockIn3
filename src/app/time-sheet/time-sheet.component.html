@@ -2,21 +2,45 @@
   
   <div class="row time-row">
        <div class="col-md-10">
-<span>
+         <span class="addres">Time sheet</span>
+
+         <span>
+<button md-button [mdMenuTriggerFor]="menu">All Activity</button>
+<md-menu #menu="mdMenu"  style="margin-top: 37px;">
+  <button md-menu-item>all activity</button>
+  <button md-menu-item>clock times</button>
+</md-menu>
+         </span>
+<span  style=" margin-left: 20px;">
 <md-form-field>
   <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
   <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
   <md-datepicker #picker></md-datepicker>
 </md-form-field>
-</span>
+</span> 
  
+        <span>
+<button md-button [mdMenuTriggerFor]="menu">All Users</button>
+<md-menu #menu="mdMenu"  style="margin-top: 37px;">
+ <tr *ngFor="let shift of timeSheet | timeFilter: xUser : xDate; let i = index">
+        
+          <td>
+            <div>
+              <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;">
+                </span></span> {{shift.username }}
+            </div>
+          </td>
+    
+        </tr>
 
+</md-menu>
+         </span>
   </div>
 
   <div class="col-md-2">
 
 
-<button class="btn btn-default" (click)="toggle1()">Action</button>
+<button class="btn btn-default btn-lg" (click)="toggle1()">Action</button>
 
 <div [ngStyle] = "setStyle1()" class="ff">
   <button class="btn btn-default" (click)="toggle1()">x</button>

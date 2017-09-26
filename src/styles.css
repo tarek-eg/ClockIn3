@@ -1,5 +1,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+body{
+  font-size: 11px; 
+}
 .bord{
     padding: 11px;
     border: 1px solid #999999;
@@ -21,7 +23,7 @@
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+ 
 }
 .greeting{
   padding-top: 20px;
@@ -125,7 +127,7 @@ padding: 8px;
 
 
 .time-row{
-  padding: 16px;
+  padding: 10px;
   background-color: rgba(250,252,254,.94);
     border-bottom: 1px solid rgba(0,0,0,.17);
     box-shadow: 0 0 2px rgba(0,0,0,.07);
@@ -148,6 +150,35 @@ padding: 8px;
      
 
 }
+
+.addres{
+    color: #464646;
+    font-size: 20px;
+    font-weight: 600;}
+
+
+.side-font{
+  font-size: 27px;
+  padding-left: 12px;
+
+}
+.employee-p{
+font-size: 19px;
+    padding-top: 19px;
+    padding-left: 13px;
+    margin-bottom: 0px;
+}
+.employee-p1 {
+font-size: 14px;
+    padding-left: 13px;
+
+}
+
+.cdk-overlay-pane{
+margin-top: 37px;
+
+}
+
 
 
 
