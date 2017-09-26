@@ -22,7 +22,7 @@
         <span>
 <button md-button [mdMenuTriggerFor]="menu">All Users</button>
 <md-menu #menu="mdMenu"  style="margin-top: 37px;">
- <tr *ngFor="let shift of timeSheet | timeFilter: xUser : xDate; let i = index">
+ <tr *ngFor="let shift of timeSheets | timeFilter: xUser : xDate; let i = index">
         
           <td>
             <div>
@@ -61,7 +61,7 @@
   Filter by User
   <select (click)="activateUser()" [(ngModel)]="xUser"> 
       <option selected>All</option>
-      <option *ngFor="let user of timesheetsDB">{{user.username}}</option>
+      <option *ngFor="let user of timeSheets">{{user.username}}</option>
   </select> &emsp;&emsp;&emsp;&emsp;&emsp; Filter by date
 
   <input (click)="activateDate()" [(ngModel)]="xDate" type="date"> &emsp;&emsp;
@@ -90,7 +90,7 @@
 <div class="row">
   <div class="col-md-12">
 <div>
-  <section *ngFor="let timesheet of timeSheets" class="copm-back">
+  <section *ngFor="let timesheet of diffTimeSheet" class="copm-back">
     <div>
       <p>
         <strong>{{ timesheet.date| date: fullDate}}</strong>
@@ -111,11 +111,11 @@
           </td>
           <td>{{ shift.timein | date:'HH:mm' }}</td>
           <td *ngIf="shift.timeout"> {{shift.timeout | date:'HH:mm' }}</td>
-          <td *ngIf="!shift.timeout"><button (click)="endShiftNow(i, shift.timein)">Edit shift</button>
+          <td *ngIf="!shift.timeout"><button (click)="endShiftNow(shift)">End shift</button>
             <td>
               <td> {{ shift.date | date: fullDate}} </td>
               <td> {{ shift.total }}</td>
-              <td><button (click)="EditRef(i, shift.timein, shift.timeout)">Edit</button> </td>
+              <td><button (click)="EditRef(shift)">Edit</button> </td>
               <td><button type="button" (click)="open(content)">Delete</button> </td>
         </tr>
       </tbody>

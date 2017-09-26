@@ -25,11 +25,10 @@ export class TimeSheetComponent  {
   timeSheets
   xUser
   xDate
-  index
   isedittrue:boolean = false
   timeIn
   timeOut
-  
+  diffTimeSheet
 
   constructor(
     private usersService:UsersService, 
@@ -38,12 +37,14 @@ export class TimeSheetComponent  {
   ) { }
 
   ngOnInit() {
-    console.log(separateDates(this.usersService.getTimesheets(), 'date'))
     this.xUser = "All"
     if (this.usersService.timeSheet.length == 0){
-      this.usersService.timeSheet = separateDates(this.usersService.getTimesheets(), 'date')
+      this.usersService.timeSheet = this.usersService.getTimesheets()
+      this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
     }
-    this.timeSheets = separateDates(this.usersService.getTimesheets(), 'date')
+    this.timeSheets = this.usersService.timeSheet
+    this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+    
   }
 
 activateUser(){
@@ -59,16 +60,17 @@ clearAll(){
   this.xUser = "All"
 }
 
-endShiftNow(index, timein){
+endShiftNow(shift){
+  let index = timesheetRef(shift, this.timeSheets)
   let exitTime = moment().format();
   this.usersService.timeSheet[index].timeout = exitTime;
-  this.usersService.timeSheet[index].total = TotalDuration(timein, exitTime)
+  this.usersService.timeSheet[index].total = TotalDuration(shift.timein, exitTime)
+  
 }
-EditRef(index, timein, timeout){
-  this.index = index
-  this.timeIn = moment(timein).format().substring(0,16)
-  this.timeOut =  moment(timeout).format().substring(0,16)
-  this.xRow = index
+EditRef(shift){
+  this.timeIn = moment(shift.timein).format().substring(0,16)
+  this.timeOut =  moment(shift.timeout).format().substring(0,16)
+  this.xRow = timesheetRef(shift, this.timeSheets) 
   this.isedittrue = true
 }
 
@@ -148,6 +150,13 @@ function separateDates(array, propertyName) {
   return newTSV
   }
 
+  function timesheetRef(obj, source){
+    for(let shift of source){
+      if(shift.username == obj.username && shift.date == obj.date && shift.timein == obj.timein){
+        return source.indexOf(shift)
+      }
+    }
+  }
 
 
   export class TimesheetView{
