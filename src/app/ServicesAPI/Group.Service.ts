@@ -16,7 +16,7 @@ export class GroupService {
   private groupsUrl ='http://cyclockapi.mbde3on.com/api/group/';//'api/groups';  // URL to web api
   private groupsUrlAdd = 'http://cyclockapi.mbde3on.com/api/group/AddGroup'; //'http://localhost:44089/api/group/AddGroup';
   private groupsUrlEdit ='http://cyclockapi.mbde3on.com/api/group/EditGroup';
-  
+  private postResponse: any; // @Tarek I added this to fix the issue temp
   constructor(private _http : Http){
  
 }

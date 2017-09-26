@@ -16,6 +16,7 @@ export class ShiftService {
   private ShiftsUrl ='http://cyclockapi.mbde3on.com/api/Shift/';//'api/groups';  // URL to web api
   private ShiftsUrlAdd = 'http://cyclockapi.mbde3on.com/api/Shift/AddShift'; 
   private ShiftsUrlEdit ='http://cyclockapi.mbde3on.com/api/Shift/EditShift';
+  private postResponse: any; // @Tarek I added this to fix the issue temp
   
 
 constructor(private _http : Http){
