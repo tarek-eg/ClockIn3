@@ -22,8 +22,9 @@ export class ClockComponent {
   Wawa = setInterval(()=> this.today = new Date, 1000) //'2017-08-31 01:00 PM'
   xDuration
   xd
-  user: string = localStorage.getItem('currentUser')
+  user = this.usersService.getUsers().filter(res => res.name == localStorage.getItem('currentUser'))[0].firstname
   
+
   _shiftStart= true
   lastUpdated
   timerInterval
@@ -52,6 +53,7 @@ export class ClockComponent {
   }
 
 ngOnInit() {
+
   // localStorage.clear()
   // localStorage.setItem('currentUser', 'Khaled Jamal')
   this.today = new Date
