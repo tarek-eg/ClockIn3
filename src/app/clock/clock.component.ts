@@ -64,12 +64,12 @@ ngOnInit() {
   
 
   // rettrieve if user is online
-  // if (isUserOnline(this.usersService.timeSheet, "Khaled Jamal")) {
-  //   this._shiftStart = !this._shiftStart
-  //   let xRow = OpenShift(this.usersService.timeSheet, 'Khaled Jamal')
-  //   this.xDuration = Timer(this.usersService.timeSheet[xRow].timein)
-  //   this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
-  //   }
+  if (isUserOnline(this.usersService.timeSheet, localStorage.getItem('currentUser'))) {
+    this._shiftStart = !this._shiftStart
+    let xRow = OpenShift(this.usersService.timeSheet, localStorage.getItem('currentUser'))
+    this.xDuration = Timer(this.usersService.timeSheet[xRow].timein)
+    this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
+    }
   }
 
   ngOnDestroy(){
