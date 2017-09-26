@@ -93,7 +93,7 @@
   <section *ngFor="let timesheet of timeSheets" class="copm-back">
     <div>
       <p>
-        <strong>{{ xDate ? (xDate | date: fullDate) : 'All Timesheets'}}</strong>
+        <strong>{{ timesheet.date| date: fullDate}}</strong>
       </p>
       <br>
     </div>
