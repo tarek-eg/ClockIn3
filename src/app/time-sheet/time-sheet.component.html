@@ -2,24 +2,49 @@
   
   <div class="row time-row">
        <div class="col-md-10">
+         <div>
          <span class="addres">Time sheet</span>
 
-         <span>
+ <span style=" margin-left: 21px;">
+  <span style="font-size: 13px;"> Filter by User : </span>
+  <select (click)="activateUser()" [(ngModel)]="xUser" style=" margin-left: 2px;"> 
+      <option selected>All</option>
+      <option *ngFor="let user of timeSheets">{{user.username}}</option>
+  </select>
+ </span>
+ <span>
+
+   <span style=" margin-left: 37px;font-size: 13px;">Filter by date : </span>
+   <span style="margin-left: 3px;">
+<md-form-field>
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="xDate">
+  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+  <md-datepicker #picker></md-datepicker>
+</md-form-field>
+   </span>
+<a (click)="clearAll()" style="margin-left: 40px;font-size: 13px;">Clear Filters</a>
+
+
+  <!--<input (click)="activateDate()" [(ngModel)]="xDate" type="date" > &emsp;&emsp;
+  -->
+
+
+
+ </span>
+
+
+      <!--   <span>
 <button md-button [mdMenuTriggerFor]="menu">All Activity</button>
 <md-menu #menu="mdMenu"  style="margin-top: 37px;">
   <button md-menu-item>all activity</button>
   <button md-menu-item>clock times</button>
 </md-menu>
-         </span>
-<span  style=" margin-left: 20px;">
-<md-form-field>
-  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-  <md-datepicker #picker></md-datepicker>
-</md-form-field>
-</span> 
+         </span>-->
+
+
+
  
-        <span>
+        <!--<span>
 <button md-button [mdMenuTriggerFor]="menu">All Users</button>
 <md-menu #menu="mdMenu"  style="margin-top: 37px;">
  <tr *ngFor="let shift of timeSheets | timeFilter: xUser : xDate; let i = index">
@@ -34,9 +59,10 @@
         </tr>
 
 </md-menu>
-         </span>
-  </div>
+         </span>-->
 
+  </div>
+       </div>
   <div class="col-md-2">
 
 
@@ -54,22 +80,7 @@
 
 
 <flash-messages></flash-messages>
-<div class="row">
-  <div class="col-md-12">
-<div class="copm-back">
-  
-  Filter by User
-  <select (click)="activateUser()" [(ngModel)]="xUser"> 
-      <option selected>All</option>
-      <option *ngFor="let user of timeSheets">{{user.username}}</option>
-  </select> &emsp;&emsp;&emsp;&emsp;&emsp; Filter by date
 
-  <input (click)="activateDate()" [(ngModel)]="xDate" type="date"> &emsp;&emsp;
-  <a (click)="clearAll()">Clear Filters</a>
-
-</div>
-</div>
-</div>
 <div class="row">
   <div class="col-md-12">
 <div *ngIf="isedittrue" class="copm-back">

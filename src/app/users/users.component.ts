@@ -12,6 +12,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styles: []
 })
 export class UsersComponent implements OnInit {
+  sidebar3 = true;
   isUserSelected: boolean = true
   users;
   user: User[];
@@ -42,6 +43,8 @@ onChange(index){
     this.selectedId = index.id
     console.log(this.selectedId)
   }
+
+
 }
 
 // isUserChecked(user){
@@ -104,6 +107,18 @@ private getDismissReason(reason: any): string {
     return  `with: ${reason}`;
   }
 }
+
+
+   setStyle3() {
+  let styles = {
+   'width.px': this.sidebar3 ? '0' : '300',
+  };
+return styles;
+}
+
+toggle3() {
+   this.sidebar3 =!this.sidebar3;
+ }
 
 
 }

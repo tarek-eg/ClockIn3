@@ -48,7 +48,7 @@ export class UsersService {
             {"id": 2, "name": "Khaled Jamal", "firstname": "Khaled", "lastname": "Jamal", "jobtitle":"HR", "password": "123" , "email": "khaledjamalhr@gmail.com", "isChecked": false},
             {"id": 3, "name": "Mahmoud Sloma", "firstname": "Mahmoud", "lastname": "Slouma", "jobtitle":"IT", "password": "123" , "email": "amany.m@gmail.com", "isChecked": false},
             {"id": 4, "name": "Osama Nour", "firstname": "Osama", "lastname": "Nour", "jobtitle":"IT", "password": "123" , "email": "Mrosamanour@gmail.com", "isChecked": false},
-            {"id": 5, "name": "Amany mhmd", "firstname": "Amany", "lastname": "Harb", "jobtitle":"IT", "password": "123" , "email": "mslouma@gmail.com", "isChecked": false}
+            {"id": 5, "name": "Amany Mhmd", "firstname": "Amany", "lastname": "Mhmd", "jobtitle":"IT", "password": "123" , "email": "mslouma@gmail.com", "isChecked": false}
           ]
   // }
   // }
@@ -70,7 +70,7 @@ export class UsersService {
         "timeout": "08 26, 2017 09:00:00 GMT+0300", 
         "total": "2 hours, 6 mins" 
     }, {
-        "username": "Amani Harb", 
+        "username": "Amani mhmd", 
         "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 11:15:00 GMT+0300",  

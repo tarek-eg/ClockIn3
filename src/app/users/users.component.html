@@ -2,13 +2,28 @@
 <div class="container-fluid">
 
  <div class="row time-row">
-       <div class="col-md-12">
+       <div class="col-md-10">
           <span class="addres">users</span>
-          
-  
-
+         
        </div>
+ <div class="col-md-2">
 
+   <button class="btn btn-default btn-lg" (click)="toggle3()">Action</button>
+
+
+
+
+
+<div [ngStyle] = "setStyle3()" class="ff">
+  <button class="btn btn-default" (click)="toggle3()">x</button>
+  <div  style="    padding: 19px;">
+
+<app-add-user></app-add-user>
+
+  </div>
+</div>
+
+</div>
  </div>
 
 <!--<app-right-sidebar [bugerBox]='true'>

@@ -1,19 +1,22 @@
-<h2>Add User</h2>
 
-<strong>Name & Email</strong><br>
-<p>We will email this user login instructions once you create their account.</p>
 
-<input placeholder="First Name" #fName><br>
-<input placeholder="Last Name" #lName><br>
-<input type="email" placeholder="Email address" #email>
+<h2 class="side-font" >Add User</h2>
+
+<p class="employee-p">Name & Email</p><br>
+<p class="employee-p1">We will email this user login instructions once you create their account.</p>
+
+<input placeholder="First Name" #fName class="form-control"><br>
+<input placeholder="Last Name" #lName class="form-control"><br>
+<input type="email" placeholder="Email address" #email class="form-control">
 <br>
-<hr>
-<br>
-<strong>Password</strong><br>
-<p>We'll email the user a link to reset their auto-generated password.</p>
+
+
+<p class="employee-p">Password</p><br>
+<p class="employee-p1">We'll email the user a link to reset their auto-generated password.</p>
 
 <br>
-<button (click)="addUser(fName.value, lName.value, email.value)">Add User</button>
+<button (click)="addUser(fName.value, lName.value, email.value)" class="btn btn-primary btn-lg"
+ style="margin-left: 85px; padding: 7px 20px">Add User</button>
 
 
 
