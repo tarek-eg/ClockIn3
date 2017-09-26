@@ -2,7 +2,14 @@
   
   <div class="row time-row">
        <div class="col-md-10">
-  <h1>Timesheet</h1> 
+<span>
+<md-form-field>
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+  <md-datepicker #picker></md-datepicker>
+</md-form-field>
+</span>
+ 
 
   </div>
 
@@ -26,6 +33,7 @@
 <div class="row">
   <div class="col-md-12">
 <div class="copm-back">
+  
   Filter by User
   <select (click)="activateUser()" [(ngModel)]="xUser"> 
       <option selected>All</option>
@@ -41,6 +49,9 @@
 <div class="row">
   <div class="col-md-12">
 <div *ngIf="isedittrue" class="copm-back">
+
+ 
+
   <form #myForms="ngForm" (ngSubmit)="onSubmit(myForms.value)">
     <label>username</label> &emsp;&emsp;&emsp;&emsp; From: &emsp;
      <input type="datetime-local" name="timein" [(ngModel)]="timeIn">

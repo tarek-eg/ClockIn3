@@ -9,6 +9,14 @@
 
     <div class="col-md-8">
       <div class="copm-back">
+
+
+<md-form-field>
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+  <md-datepicker #picker></md-datepicker>
+</md-form-field>
+
   <form  class="container" #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
     <div class="form-group">
       <label>Username</label>

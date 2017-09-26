@@ -11,7 +11,8 @@ import {  MdButtonModule,
   MdToolbarModule,
   MdListModule,
   MdProgressBarModule,
-  MdProgressSpinnerModule, MdMenuModule } from '@angular/material';
+  MdProgressSpinnerModule, MdMenuModule, MdDatepickerModule,MdNativeDateModule } from '@angular/material';
+ 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -28,7 +29,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MdToolbarModule,
     MdListModule,
     MdProgressBarModule,
-    MdProgressSpinnerModule, MdMenuModule
+    MdProgressSpinnerModule, MdMenuModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   declarations: [],
   exports: [
@@ -44,7 +47,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MdToolbarModule,
     MdListModule,
     MdProgressBarModule,
-    MdProgressSpinnerModule, MdMenuModule
+    MdProgressSpinnerModule, MdMenuModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
 })
 export class MaterialModule { }
