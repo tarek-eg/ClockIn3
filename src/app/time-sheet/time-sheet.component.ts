@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { UsersService } from '../shared/users.service';
+import { UsersService, TS } from '../shared/users.service';
 import { Router } from '@angular/router'
 var moment = require('moment');
 require('moment-precise-range-plugin');
@@ -22,7 +22,7 @@ export class TimeSheetComponent  {
  /// closeResult: string;
 
   xRow: number
-  timeSheet 
+  timeSheets
   xUser
   xDate
   index
@@ -38,11 +38,12 @@ export class TimeSheetComponent  {
   ) { }
 
   ngOnInit() {
+    console.log(separateDates(this.usersService.getTimesheets(), 'date'))
     this.xUser = "All"
     if (this.usersService.timeSheet.length == 0){
-      this.usersService.timeSheet = this.usersService.getTimesheets()
+      this.usersService.timeSheet = separateDates(this.usersService.getTimesheets(), 'date')
     }
-    this.timeSheet = this.usersService.timeSheet
+    this.timeSheets = separateDates(this.usersService.getTimesheets(), 'date')
   }
 
 activateUser(){
@@ -137,3 +138,18 @@ function TotalDuration(timein, timeout) {
   return moment.preciseDiff(moment(timein).format('LLLL'), moment(timeout).format('LLLL'))
 }
 
+
+function separateDates(array, propertyName) {
+  let newTSV = []
+  let xArr = array.filter((e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i)
+  for(let x of xArr){
+    newTSV.push(new TimesheetView(x.date, array.filter(res => res.date == x.date)))
+  }
+  return newTSV
+  }
+
+
+
+  export class TimesheetView{
+    public constructor( public date: any, public obj: TS[]) {}
+  }

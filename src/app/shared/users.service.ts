@@ -65,31 +65,31 @@ export class UsersService {
     return [
     {
         "username": "Tarek Goda", 
-        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 09:00:00 GMT+0300", 
         "total": "2 hours, 6 mins" 
     }, {
         "username": "Amani Harb", 
-        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 11:15:00 GMT+0300",  
         "total": "4 hours, 22 mins" 
     },{
         "username": "Khaled Jamal", 
-        "date": "08 26, 2017",  
+        "date": "08 28, 2017",  
         "timein": "09 12, 2017 02:00 PM", 
         "timeout": "", 
         "total": "1 hours, 9 mins" 
     },{
         "username": "Osama Nour", 
-        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 11:15:00 GMT+0300",  
         "total": "0 hours, 33 mins" 
     },{
         "username": "Mahmoud Slouma", 
-        "date": "08 26, 2017 09:00:00 GMT+0300",  
+        "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 11:15:00 GMT+0300", 
         "total": "8 hours, 1 mins" }

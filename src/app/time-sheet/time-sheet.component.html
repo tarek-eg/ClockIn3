@@ -90,7 +90,7 @@
 <div class="row">
   <div class="col-md-12">
 <div>
-  <section class="copm-back">
+  <section *ngFor="let timesheet of timeSheets" class="copm-back">
     <div>
       <p>
         <strong>{{ xDate ? (xDate | date: fullDate) : 'All Timesheets'}}</strong>
@@ -101,7 +101,7 @@
       <thead></thead>
       <tbody class="t-item">
 
-        <tr *ngFor="let shift of timeSheet | timeFilter: xUser : xDate; let i = index">
+        <tr *ngFor="let shift of timesheet.obj | timeFilter: xUser : xDate; let i = index">
           <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
           <td>
             <div>
