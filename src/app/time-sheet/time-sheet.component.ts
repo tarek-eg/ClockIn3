@@ -79,6 +79,12 @@ clearAll(){
   this.ngOnInit()
 }
 
+addShift(){
+  this.timeSheets = this.usersService.timeSheet
+  this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+
+}
+
 endShiftNow(shift){
   let index = timesheetRef(shift, this.timeSheets)
   let exitTime = moment().format();

@@ -71,7 +71,7 @@
 <div [ngStyle] = "setStyle1()" class="ff">
   <button class="btn btn-default" (click)="toggle1()">x</button>
 
-  <app-add-shift></app-add-shift>
+  <app-add-shift (change)="addShift()"></app-add-shift>
 
  </div>
   </div>

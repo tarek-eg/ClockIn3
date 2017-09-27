@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { RightSidebarComponent } from '../shared/right-sidebar.component';
 import { UsersService, TS } from '../shared/users.service';
 import { EmitterService } from '../shared/emitter.service'
@@ -13,6 +13,7 @@ import { FlashMessagesService } from 'angular2-flash-messages'
   styles: []
 })
 export class AddShiftComponent implements OnInit {
+@Output()change = new EventEmitter()
 
   users
   selectedValue
@@ -21,14 +22,16 @@ export class AddShiftComponent implements OnInit {
   
   constructor(private usersService:UsersService,
               private flashMessage:FlashMessagesService,
-              private emitterService:EmitterService ) {
+              // private emitterService:EmitterService 
+            ) {
    }
 
    AddShift(user, timein , timeout){
+     console.log()
     this.usersService.timeSheet.push(new TS(user, timein, timein, timeout, TotalDuration(timein,timeout)))
-    this.emitterService.closeSidebar()
+    // this.emitterService.closeSidebar()
     this.flashMessage.show("Shift has been successfuly added.", {cssClass: 'alert-success',  timeout: 3000})
-
+    this.change.emit()
   }
   ngOnInit() {
     this.selectedValue = "Select Name"
