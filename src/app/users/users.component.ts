@@ -67,18 +67,21 @@ ngOnInit(){
 }
 
 checkBoxChecked(i, e){
-
   if(e.target.checked){
   this.isUserSelected = true
   console.log(this.users[i].UserName)
+  this.deleteUser(i)
   }else{
     console.log('unchecked')
   }
 }
 
-deleteUser(){
-  if(this.userSelected){
-    this.userServ.DeleteUser(this.UserID)
+deleteUser(i){
+  if(this.isUserSelected){
+    console.log(this.user.UserName)
+    this.userServ.DeleteUser(this.user.UserID)
+    this.userServ.getAllUsers()
+    .subscribe(users => {this.users = users});
   }
 }
 
