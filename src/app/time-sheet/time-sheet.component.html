@@ -17,7 +17,7 @@
    <span style=" margin-left: 37px;font-size: 13px;">Filter by date : </span>
    <span style="margin-left: 3px;">
 <md-form-field>
-  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="xDate" (click)="activateDate(xDate)">
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="xDate" (ngModelChange)="activateDate(xDate)">
   <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
   <md-datepicker #picker></md-datepicker>
 </md-form-field>
