@@ -13,13 +13,53 @@ import {User} from './User';
 export class UserService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private usersUrl = 'api/users';  // URL to web api
-
+  private usersUrl ='http://cyclockapi.mbde3on.com/api/User/';//'api/groups';  // URL to web api
+  private usersUrlAdd = this.usersUrl + 'AddUser'; 
+  private usersUrlEdit =this.usersUrl + 'EditUser';
+  private usersUrlDelete =this.usersUrl + 'DeleteUser';
+  
+  postResponse : any;
 constructor(private _http : Http){
 }
 
+
+AddUser(user:User){
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  this._http.post(this.usersUrlAdd, 
+                         JSON.stringify({UserName:user.UserName , GroupID:user.GroupID 
+                          , LoginName:user.LoginName , Password:user.Password , UserColor:user.UserColor 
+                          , UserLogo:user.UserLogo , HourRate:user.HourRate 
+                          , IsAdmin:user.IsAdmin , IsDeleted:user.IsDeleted}),
+                         {headers:headers})
+  .map((res: Response) => res.json())
+  .subscribe((res:User) => { this.postResponse = res; console.log(res); });
+}
+
+EditGroup(user: User) {
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+ let url = `${this.usersUrlEdit}`; 
+  return this._http
+             .put(url, JSON.stringify(user), {headers: headers})
+             .map(res => res.json())
+             .subscribe((res:User) => { this.postResponse = res; console.log(res); });
+  }
+
+DeleteUser(id:number){
+  var headers = new Headers();
+  this._http.delete(this.usersUrlDelete + '/?id='+id, new RequestOptions({
+    headers: headers,
+    body: User
+ }))
+ .subscribe((ok)=>{console.log(ok)});
+}
+
+
+// Old Not Gold
+
 /********* From Hero Editor **************/
-  getAllusers(): Promise<User[]> {
+/*  getAllusers(): Promise<User[]> {
     return this._http.get(this.usersUrl)
                .toPromise()
                .then(response => response.json().data as User[])
@@ -36,8 +76,9 @@ constructor(private _http : Http){
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
+*/
   /*************************/
+  /*
    getUsersWithPromise(): Promise<User[]> {
         return this._http.get(this.usersUrl).toPromise()
 		    .then(this.extractData)
@@ -59,6 +100,7 @@ private handleErrorPromise (error: Response | any) {
 		console.error(error.message || error);
 		return Promise.reject(error.message || error);
     }	
+    */
 /************************/
 
 }

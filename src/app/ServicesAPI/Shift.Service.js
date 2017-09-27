@@ -20,8 +20,9 @@ var ShiftService = (function () {
         this._http = _http;
         this.headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         this.ShiftsUrl = 'http://cyclockapi.mbde3on.com/api/Shift/'; //'api/groups';  // URL to web api
-        this.ShiftsUrlAdd = 'http://cyclockapi.mbde3on.com/api/Shift/AddShift';
-        this.ShiftsUrlEdit = 'http://cyclockapi.mbde3on.com/api/Shift/EditShift';
+        this.ShiftsUrlAdd = this.ShiftsUrl + 'AddShift';
+        this.ShiftsUrlEdit = this.ShiftsUrl + 'EditShift';
+        this.ShiftsUrlDelete = this.ShiftsUrl + 'DeleteShift';
     }
     ShiftService.prototype.AddShift = function (shift) {
         var _this = this;
@@ -33,9 +34,19 @@ var ShiftService = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (res) { _this.postResponse = res; console.log(res); });
     };
+    ShiftService.prototype.EditGroup = function (shift) {
+        var _this = this;
+        var headers = new http_2.Headers();
+        headers.append('Content-Type', 'application/json');
+        var url = "" + this.ShiftsUrlEdit;
+        return this._http
+            .put(url, JSON.stringify(shift), { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) { _this.postResponse = res; console.log(res); });
+    };
     ShiftService.prototype.DeleteShift = function (id) {
         var headers = new http_2.Headers();
-        this._http.delete('http://cyclockapi.mbde3on.com/api/Shift/Delete/?id=' + id, new http_2.RequestOptions({
+        this._http.delete(this.ShiftsUrlDelete + '/?id=' + id, new http_2.RequestOptions({
             headers: headers,
             body: Shift_1.Shift
         }))

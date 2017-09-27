@@ -13,10 +13,13 @@ import {Group} from './Group';
 export class GroupService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private groupsUrl ='http://cyclockapi.mbde3on.com/api/group/';//'api/groups';  // URL to web api
-  private groupsUrlAdd = 'http://cyclockapi.mbde3on.com/api/group/AddGroup'; //'http://localhost:44089/api/group/AddGroup';
-  private groupsUrlEdit ='http://cyclockapi.mbde3on.com/api/group/EditGroup';
-  private postResponse: any; // @Tarek I added this to fix the issue temp
+  private groupsUrl ='http://cyclockapi.mbde3on.com/api/group/';
+  private groupsUrlAdd = this.groupsUrl + 'AddGroup'; 
+  private groupsUrlEdit =this.groupsUrl + 'EditGroup';
+  private groupsUrlDelete =this.groupsUrl + 'Delete';
+  
+  postResponse : any;
+
   constructor(private _http : Http){
  
 }
@@ -33,7 +36,7 @@ AddGroup(group:Group){
 
 DeleteGroup(id:number){
   var headers = new Headers();
-  this._http.delete('http://cyclockapi.mbde3on.com/api/group/Delete/?id='+id, new RequestOptions({
+  this._http.delete(this.groupsUrlDelete + '/?id='+id, new RequestOptions({
     headers: headers,
     body: Group
  }))
@@ -41,20 +44,18 @@ DeleteGroup(id:number){
 }
 
 
-/*
- put(hero: Group) {
+
+ EditGroup(hero: Group) {
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-
-  let url = `${this.groupsUrlEdit}/${hero.GroupID}`;
-console.log(url);
+ // let url = `${this.groupsUrlEdit}/${hero.GroupID}`;
+ let url = `${this.groupsUrlEdit}`; 
   return this._http
              .put(url, JSON.stringify(hero), {headers: headers})
              .map(res => res.json())
              .subscribe((res:Group) => { this.postResponse = res; console.log(res); });
-             
-}
-
+  }
+/*
 addComment (body: Object): Observable<Group[]> {
   let bodyString = JSON.stringify(body); // Stringify payload
   let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON

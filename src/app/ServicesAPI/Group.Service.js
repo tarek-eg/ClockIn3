@@ -19,9 +19,10 @@ var GroupService = (function () {
     function GroupService(_http) {
         this._http = _http;
         this.headers = new http_2.Headers({ 'Content-Type': 'application/json' });
-        this.groupsUrl = 'http://cyclockapi.mbde3on.com/api/group/'; //'api/groups';  // URL to web api
-        this.groupsUrlAdd = 'http://cyclockapi.mbde3on.com/api/group/AddGroup'; //'http://localhost:44089/api/group/AddGroup';
-        this.groupsUrlEdit = 'http://cyclockapi.mbde3on.com/api/group/EditGroup';
+        this.groupsUrl = 'http://cyclockapi.mbde3on.com/api/group/';
+        this.groupsUrlAdd = this.groupsUrl + 'AddGroup';
+        this.groupsUrlEdit = this.groupsUrl + 'EditGroup';
+        this.groupsUrlDelete = this.groupsUrl + 'Delete';
     }
     GroupService.prototype.AddGroup = function (group) {
         var _this = this;
@@ -33,11 +34,22 @@ var GroupService = (function () {
     };
     GroupService.prototype.DeleteGroup = function (id) {
         var headers = new http_2.Headers();
-        this._http.delete('http://cyclockapi.mbde3on.com/api/group/Delete/?id=' + id, new http_2.RequestOptions({
+        this._http.delete(this.groupsUrlDelete + '/?id=' + id, new http_2.RequestOptions({
             headers: headers,
             body: Group_1.Group
         }))
             .subscribe(function (ok) { console.log(ok); });
+    };
+    GroupService.prototype.EditGroup = function (hero) {
+        var _this = this;
+        var headers = new http_2.Headers();
+        headers.append('Content-Type', 'application/json');
+        // let url = `${this.groupsUrlEdit}/${hero.GroupID}`;
+        var url = "" + this.groupsUrlEdit;
+        return this._http
+            .put(url, JSON.stringify(hero), { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) { _this.postResponse = res; console.log(res); });
     };
     return GroupService;
 }());

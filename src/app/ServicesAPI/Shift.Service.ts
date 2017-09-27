@@ -14,10 +14,11 @@ export class ShiftService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private ShiftsUrl ='http://cyclockapi.mbde3on.com/api/Shift/';//'api/groups';  // URL to web api
-  private ShiftsUrlAdd = 'http://cyclockapi.mbde3on.com/api/Shift/AddShift'; 
-  private ShiftsUrlEdit ='http://cyclockapi.mbde3on.com/api/Shift/EditShift';
-  private postResponse: any; // @Tarek I added this to fix the issue temp
+  private ShiftsUrlAdd = this.ShiftsUrl + 'AddShift'; 
+  private ShiftsUrlEdit =this.ShiftsUrl + 'EditShift';
+  private ShiftsUrlDelete =this.ShiftsUrl + 'DeleteShift';
   
+  postResponse : any;  
 
 constructor(private _http : Http){
  
@@ -36,9 +37,19 @@ AddShift(shift:Shift){
   .subscribe((res:Shift) => { this.postResponse = res; console.log(res); });
 }
 
+EditGroup(shift: Shift) {
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+ let url = `${this.ShiftsUrlEdit}`; 
+  return this._http
+             .put(url, JSON.stringify(shift), {headers: headers})
+             .map(res => res.json())
+             .subscribe((res:Shift) => { this.postResponse = res; console.log(res); });
+  }
+
 DeleteShift(id:number){
   var headers = new Headers();
-  this._http.delete('http://cyclockapi.mbde3on.com/api/Shift/Delete/?id='+id, new RequestOptions({
+  this._http.delete(this.ShiftsUrlDelete + '/?id='+id, new RequestOptions({
     headers: headers,
     body: Shift
  }))
