@@ -64,13 +64,11 @@ activateUser(user){
 }
 
 activateDate(date){
-  console.log(date)
+
     this.xUser = "All"
     this.timeSheets = this.usersService.timeSheet
     this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
-  
-    
-    this.timeSheets = this.usersService.timeSheet.filter(res => res.date == date) 
+    this.timeSheets = this.usersService.timeSheet.filter(res => moment(res.date).format() == moment(date).format()) 
     this.diffTimeSheet =  separateDates(this.timeSheets, 'date')
     } 
 
@@ -78,6 +76,7 @@ activateDate(date){
 clearAll(){
   this.xDate = null
   this.xUser = "All"
+  this.ngOnInit()
 }
 
 endShiftNow(shift){

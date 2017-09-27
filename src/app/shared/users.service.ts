@@ -64,7 +64,7 @@ export class UsersService {
     //Khaled Jamal
     return [
     {
-        "username": "Tarek Goda", 
+        "username": "Tarek Mostafa", 
         "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 09:00:00 GMT+0300", 
@@ -88,7 +88,7 @@ export class UsersService {
         "timeout": "08 26, 2017 11:15:00 GMT+0300",  
         "total": "0 hours, 33 mins" 
     },{
-        "username": "Mahmoud Slouma", 
+        "username": "Mahmoud Sloma", 
         "date": "08 26, 2017",  
         "timein": "08 26, 2017 09:00:00 GMT+0300", 
         "timeout": "08 26, 2017 11:15:00 GMT+0300", 
