@@ -67,9 +67,10 @@ ngOnInit(){
 }
 
 checkBoxChecked(i, e){
+
   if(e.target.checked){
   this.isUserSelected = true
-  console.log(this.user.UserName, this.user.UserID,i)
+  console.log(this.users[i].UserName)
   }else{
     console.log('unchecked')
   }
