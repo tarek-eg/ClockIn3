@@ -1,12 +1,14 @@
 export class User {
-  UserID?: number;
-  GroupID?:number;
-  UserName?: string;
-  LoginName?: string;
-  Password?: string;
-  UserColor?: string;
-  UserLogo?: string;
-  HourRate?: number;
-  IsAdmin?: boolean;
-  IsDeleted?: boolean;
+  public constructor(
+    public UserID: number,
+    public GroupID: number,
+    public UserName: string,
+    public LoginName: string,
+    public Password: string,
+    public UserColor: string,
+    public UserLogo: string,
+    public HourRate: number,
+    public IsAdmin: boolean,
+    public IsDeleted: boolean) { }
+    
 }
