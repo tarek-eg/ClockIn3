@@ -35,6 +35,7 @@ export class UsersComponent  {
   HourRate: number;
   IsAdmin: boolean;
   IsDeleted: boolean;
+  private x;
 
   constructor(//private usersService: UsersService,
               private router: Router,
@@ -43,16 +44,16 @@ export class UsersComponent  {
               private _http: Http
              ) {
 
-    this.user.UserID=4;
-    this.user.GroupID=1;
-    this.user.LoginName='ab';
-    this.user.Password='ab';
-    this.user.UserColor='ab';
-    this.user.UserLogo='ab';
-    this.user.UserName='ab';
-    this.user.HourRate=5;
-    this.user.IsAdmin=true;
-    this.user.IsDeleted=false;
+    // this.user.UserID;
+    // this.user.GroupID;
+    // this.user.LoginName;
+    // this.user.Password;
+    // this.user.UserColor;
+    // this.user.UserLogo;
+    // this.user.UserName;
+    // this.user.HourRate;
+    // this.user.IsAdmin;
+    // this.user.IsDeleted;
 
     // this._http.get("http://cyclockapi.mbde3on.com/api/user/")
     // .map(res=>res.json())
@@ -69,17 +70,17 @@ ngOnInit(){
 checkBoxChecked(i, e){
   if(e.target.checked){
   this.isUserSelected = true
-  console.log(this.users[i].UserName)
-  this.deleteUser(i)
+  this.x = this.users[i].UserID
+  console.log(this.x)
   }else{
     console.log('unchecked')
   }
 }
 
-deleteUser(i){
+deleteUser(){
   if(this.isUserSelected){
-    console.log(this.user.UserName)
-    this.userServ.DeleteUser(this.user.UserID)
+    console.log("hi" + this.x)
+    this.userServ.DeleteUser(this.x)
     this.userServ.getAllUsers()
     .subscribe(users => {this.users = users});
   }
