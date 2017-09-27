@@ -44,16 +44,16 @@ export class UsersComponent  {
               private _http: Http
              ) {
 
-    this.user.UserID=2;
-    this.user.GroupID=1;
-    this.user.LoginName="Tarek";
-    this.user.Password="asd";
-    this.user.UserColor="red";
-    this.user.UserLogo="gg";
-    this.user.UserName="TarekMostafa";
-    this.user.HourRate;
-    this.user.IsAdmin;
-    this.user.IsDeleted;
+    // this.user.UserID=2;
+    // this.user.GroupID=1;
+    // this.user.LoginName="Tarek";
+    // this.user.Password="asd";
+    // this.user.UserColor="red";
+    // this.user.UserLogo="gg";
+    // this.user.UserName="TarekMostafa";
+    // this.user.HourRate;
+    // this.user.IsAdmin;
+    // this.user.IsDeleted;
 
     // this._http.get("http://cyclockapi.mbde3on.com/api/user/")
     // .map(res=>res.json())
@@ -81,27 +81,23 @@ deleteUser(){
   if(this.isUserSelected){
     console.log("hi" + this.x)
     this.userServ.DeleteUser(this.x)
-    this.userServ.getAllUsers()
+    this.userServ.getAllUsers() // update the view after deleting the user
     .subscribe(users => {this.users = users});
   }
 }
 
-addUser(){
-  this.userServ.AddUser(this.user)
-}
-
-
+onEdit() {  
+    console.log("edit " + this.x)
+    // let id = this.x
+    setTimeout(()=> {
+      this.router.navigate(['/users', this.x]);
+    }, 1000);
+  }
 
  // Get Users
-      
-
-
 //   ngOnInit() {
 //     this.users = this.usersService.getUsers();
 // };
-
-
-
 // onChange(index){
 //   for (let i of this.users){
 //     i.isChecked = false
@@ -119,13 +115,7 @@ addUser(){
 // }
 
 
-// onEdit() {  
-//   console.log(this.selectedId)
-//   let id = this.selectedId
-//   setTimeout(()=> {
-//     this.router.navigate(['/users', '1']);
-//   }, 1000);
-// }
+
 
 // isSelected(user: User) { 
 //   return user.id === this.selectedId;

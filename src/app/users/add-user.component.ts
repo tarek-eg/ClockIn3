@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../shared/users.service';
 import { EmitterService } from '../shared/emitter.service'
 import { FlashMessagesService } from 'angular2-flash-messages'
+import { UserService} from '../ServicesAPI/User.Service'
 import { User } from '../ServicesAPI/User'
+import { Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-add-user',
@@ -11,15 +13,18 @@ import { User } from '../ServicesAPI/User'
 })
 export class AddUserComponent {
  
+  users:User[];
+  user = new User();
   
   constructor(private flashMessage:FlashMessagesService,
-    // private emitterService:EmitterService
+    private userServ: UserService
   ){}
   
     
-    addUser(fname, lname, email){
+    addUser(){
       // this.emitterService.closeSidebar()
-      console.log(new User(1, 1, fname +" " +lname, fname + lname, "123", 'red', "Egypt", 1, true, true ))
+      console.log("Adding User")
+      this.userServ.AddUser(this.user)
       this.flashMessage.show("User has been created.", {cssClass: 'alert-success',  timeout: 3000})
   
   }

@@ -1,22 +1,21 @@
-
-
+<!-- Tarek -->
 <h2 class="side-font" >Add User</h2>
-
 <p class="employee-p">Name & Email</p><br>
 <p class="employee-p1">We will email this user login instructions once you create their account.</p>
-
-<input placeholder="First Name" #fName class="form-control"><br>
-<input placeholder="Last Name" #lName class="form-control"><br>
-<input type="email" placeholder="Email address" #email class="form-control">
+<div>
+  <form (ngSubmit)="addUser()">
+    <div class="form-group">
+<input placeholder="User Name" name="username" class="form-control" [(ngModel)]="user.UserName"><br>
+<input placeholder="Login Name" name="loginName" class="form-control" [(ngModel)]="user.LoginName"><br>
+<input placeholder="User Color" name="color" class="form-control" [(ngModel)]="user.UserColor"><br>
+<input placeholder="Group ID" name="groupID" class="form-control" [(ngModel)]="user.GroupID"><br>
+<input placeholder="Group Name" name="groupName" class="form-control" [(ngModel)]="user.GroupName"><br>
 <br>
-
-
-<p class="employee-p">Password</p><br>
-<p class="employee-p1">We'll email the user a link to reset their auto-generated password.</p>
-
-<br>
-<button (click)="addUser(fName.value, lName.value, email.value)" class="btn btn-primary btn-lg"
+<button type="submit" class="btn btn-primary btn-lg"
  style="margin-left: 85px; padding: 7px 20px">Add User</button>
+    </div>
+  </form>
+</div>
 
 
 
