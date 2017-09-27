@@ -44,16 +44,16 @@ export class UsersComponent  {
               private _http: Http
              ) {
 
-    // this.user.UserID;
-    // this.user.GroupID;
-    // this.user.LoginName;
-    // this.user.Password;
-    // this.user.UserColor;
-    // this.user.UserLogo;
-    // this.user.UserName;
-    // this.user.HourRate;
-    // this.user.IsAdmin;
-    // this.user.IsDeleted;
+    this.user.UserID=2;
+    this.user.GroupID=1;
+    this.user.LoginName="Tarek";
+    this.user.Password="asd";
+    this.user.UserColor="red";
+    this.user.UserLogo="gg";
+    this.user.UserName="TarekMostafa";
+    this.user.HourRate;
+    this.user.IsAdmin;
+    this.user.IsDeleted;
 
     // this._http.get("http://cyclockapi.mbde3on.com/api/user/")
     // .map(res=>res.json())
