@@ -16,7 +16,8 @@ export class AddShiftComponent implements OnInit {
 
   users
   selectedValue
- 
+  shiftIn: any
+  shiftOut: any
   
   constructor(private usersService:UsersService,
               private flashMessage:FlashMessagesService,

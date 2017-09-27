@@ -23,7 +23,7 @@ export class ClockComponent {
   xDuration
   xd
   user = this.usersService.getUsers().filter(res => res.name == localStorage.getItem('currentUser'))[0].firstname
-  
+  selectedValue: any
 
   _shiftStart= true
   lastUpdated
