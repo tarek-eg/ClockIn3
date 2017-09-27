@@ -7,9 +7,9 @@
 
  <span style=" margin-left: 21px;">
   <span style="font-size: 13px;"> Filter by User : </span>
-  <select (click)="activateUser()" [(ngModel)]="xUser" style=" margin-left: 2px;"> 
+  <select (click)="activateUser(xUser)" [(ngModel)]="xUser" style=" margin-left: 2px;"> 
       <option selected>All</option>
-      <option *ngFor="let user of timeSheets">{{user.username}}</option>
+      <option *ngFor="let user of usersList">{{user.name}}</option>
   </select>
  </span>
  <span>
@@ -17,7 +17,7 @@
    <span style=" margin-left: 37px;font-size: 13px;">Filter by date : </span>
    <span style="margin-left: 3px;">
 <md-form-field>
-  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="xDate">
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="xDate" (click)="activateDate(xDate)">
   <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
   <md-datepicker #picker></md-datepicker>
 </md-form-field>
@@ -112,7 +112,7 @@
       <thead></thead>
       <tbody class="t-item">
 
-        <tr *ngFor="let shift of timesheet.obj | timeFilter: xUser : xDate; let i = index">
+        <tr *ngFor="let shift of timesheet.obj">
           <!--<td> <label><input type="checkbox"  class=""></label> </td>-->
           <td>
             <div>

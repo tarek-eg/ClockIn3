@@ -22,6 +22,7 @@ export class TimeSheetComponent  {
  /// closeResult: string;
 
   xRow: number
+  usersList 
   timeSheets
   xUser
   xDate
@@ -38,22 +39,41 @@ export class TimeSheetComponent  {
 
   ngOnInit() {
     this.xUser = "All"
+    this.usersList = this.usersService.getUsers()
+
     if (this.usersService.timeSheet.length == 0){
       this.usersService.timeSheet = this.usersService.getTimesheets()
       this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
     }
     this.timeSheets = this.usersService.timeSheet
+    
     this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
     
   }
 
-activateUser(){
+activateUser(user){
+  if(user !== "All"){
+  this.timeSheets = this.usersService.timeSheet
+  this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+
   this.xDate = null
+  this.timeSheets = this.usersService.timeSheet.filter(res => res.username == user) 
+  this.diffTimeSheet =  separateDates(this.timeSheets, 'date')
+  } else
+  { this.ngOnInit()}
 }
 
-activateDate(){
+activateDate(date){
+  console.log(date)
     this.xUser = "All"
-}
+    this.timeSheets = this.usersService.timeSheet
+    this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+  
+    
+    this.timeSheets = this.usersService.timeSheet.filter(res => res.date == date) 
+    this.diffTimeSheet =  separateDates(this.timeSheets, 'date')
+    } 
+
 
 clearAll(){
   this.xDate = null

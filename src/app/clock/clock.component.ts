@@ -17,7 +17,7 @@ require('moment-precise-range-plugin');
 export class ClockComponent {
    some = true;
   some2 = true;
-
+  username = localStorage.getItem('currentUser')
   today 
   Wawa = setInterval(()=> this.today = new Date, 1000) //'2017-08-31 01:00 PM'
   xDuration
@@ -38,16 +38,21 @@ export class ClockComponent {
   this._shiftStart = !this._shiftStart
   if (!this._shiftStart) {
     //start shift
-    this.usersService.timeSheet.push(new TS(localStorage.getItem('currentUser'), new Date, new Date, "", ""))
-    let xRow = OpenShift(this.usersService.timeSheet, 'Khaled Jamal')
+    this.usersService.timeSheet.push(new TS(this.username, new Date, new Date, "", ""))
+    let xRow = OpenShift(this.usersService.timeSheet, this.username)
     this.xDuration = "less than a minute"
     this.timerInterval = setInterval(()=>this.xDuration = Timer(this.usersService.timeSheet[xRow].timein), 1000)
     
   
   } else {
     //end shift
-    let x = updateTime(this.usersService.timeSheet, 'Khaled Jamal')
-
+    let source = this.usersService.timeSheet
+    for (var i in source) {
+      if (source[i].username == this.username && source[i].timeout == "") {
+        source[i].timeout = new Date
+        source[i].total = TotalDuration(source[i].timein, source[i].timeout )
+      }
+    }
     clearInterval(this.timerInterval)
   }
   }
@@ -100,17 +105,6 @@ function Calc(y, x) {
 }
 
 
-function updateTime(array, x) {
-  for (var i in array) {
-    if (array[i].username == x && array[i].timeout == "") {
-      array[i].timeout = new Date
-      return i
-      //break;
-    }
-  }
-}
-
-
 function Timer(timein) {
   if (moment.preciseDiff(moment(timein).format("LLL"), moment().format("LLL"))=="") {
     return "less than a minute"
@@ -138,6 +132,9 @@ function OpenShift(array, username) {
 }
 
 
+function TotalDuration(timein, timeout) {
+  return moment.preciseDiff(moment(timein).format('LLLL'), moment(timeout).format('LLLL'))
+}
 
 
 
