@@ -55,7 +55,27 @@ DeleteUser(id:number){
  .subscribe((ok)=>{console.log(ok)});
 }
 
+// Tarek
+getAllUsers():Observable<User[]>{
+  return  this._http.get(this.usersUrl)
+    .map(res => res.json())
+    .catch(this.handleError); 
+}
 
+
+/* Handle errors Tarek*/
+private handleError(err){
+  let errMessage: string;
+
+  if (err instanceof Response){
+      let body = err.json() || '';
+      let error = body.error || JSON.stringify(body);
+      errMessage = `${err.status} - ${err.statusText || ''} ${error}`;
+  }else{
+      errMessage = err.message ? err.message : err.toString();
+  }
+  return Observable.throw(errMessage)
+}
 // Old Not Gold
 
 /********* From Hero Editor **************/
