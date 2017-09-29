@@ -78,11 +78,18 @@ checkBoxChecked(i, e){
 }
 
 deleteUser(){
+  let userArray = this.users
   if(this.isUserSelected){
     console.log("hi" + this.x)
     this.userServ.DeleteUser(this.x)
     this.userServ.getAllUsers() // update the view after deleting the user
-    .subscribe(users => {this.users = users});
+    .subscribe(users => {
+      for(let i=0; i < userArray.length; i++)
+      {
+        if(userArray[i].UserID === this.x){
+          userArray.splice(i,1)
+        }
+      } });
   }
 }
 
