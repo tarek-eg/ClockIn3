@@ -1,6 +1,22 @@
-<div class="container-fluid">
+
+
+<md-sidenav-container class="example-container" dir="rtl">
+ 
+ <md-sidenav #sidenav class="example-sidenav" mode="over">
   
-  <div class="row time-row">
+
+      
+    <app-add-shift (change)="addShift()" dir="ltr"></app-add-shift>
+  
+</md-sidenav>
+
+  
+<div class="example-sidenav-content">
+
+
+<div class="container-fluid" >
+  
+  <div class="row time-row" dir="ltr">
        <div class="col-md-10">
          <div>
          <span class="addres">Time sheet</span>
@@ -25,55 +41,29 @@
 <a (click)="clearAll()" style="margin-left: 40px;font-size: 13px;">Clear Filters</a>
 
 
-  <!--<input (click)="activateDate()" [(ngModel)]="xDate" type="date" > &emsp;&emsp;
-  -->
+ 
 
 
 
  </span>
 
 
-      <!--   <span>
-<button md-button [mdMenuTriggerFor]="menu">All Activity</button>
-<md-menu #menu="mdMenu"  style="margin-top: 37px;">
-  <button md-menu-item>all activity</button>
-  <button md-menu-item>clock times</button>
-</md-menu>
-         </span>-->
-
-
-
- 
-        <!--<span>
-<button md-button [mdMenuTriggerFor]="menu">All Users</button>
-<md-menu #menu="mdMenu"  style="margin-top: 37px;">
- <tr *ngFor="let shift of timeSheets | timeFilter: xUser : xDate; let i = index">
-        
-          <td>
-            <div>
-              <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;">
-                </span></span> {{shift.username }}
-            </div>
-          </td>
-    
-        </tr>
-
-</md-menu>
-         </span>-->
 
   </div>
        </div>
   <div class="col-md-2">
+    <div>
+  <button  [mdMenuTriggerFor]="menu" md-raised-button  style="font-size: 11px;">Menu</button>
+<md-menu #menu="mdMenu" >
 
+  <button md-menu-item  (click)="sidenav.open()" style="font-size: 11px;" > Actions</button>
+    <button md-menu-item style="font-size: 11px;">Item 1</button>
+    
+</md-menu>
+    </div>
 
-<button class="btn btn-default btn-lg" (click)="toggle1()">Action</button>
+ 
 
-<div [ngStyle] = "setStyle1()" class="ff">
-  <button class="btn btn-default" (click)="toggle1()">x</button>
-
-  <app-add-shift (change)="addShift()"></app-add-shift>
-
- </div>
   </div>
   </div>
 
@@ -81,8 +71,15 @@
 
 <flash-messages></flash-messages>
 
-<div class="row">
+
+
+
+    
+
+<div class="row" dir="ltr">
   <div class="col-md-12">
+
+    
 <div *ngIf="isedittrue" class="copm-back">
 
  
@@ -98,7 +95,8 @@
 </div>
 </div>
 </div>
-<div class="row">
+
+<div class="row" dir="ltr">
   <div class="col-md-12">
 <div>
   <section *ngFor="let timesheet of diffTimeSheet" class="copm-back">
@@ -134,8 +132,19 @@
   </section>
 </div>
 </div>
+
+
+
 </div>
+   
+</div> 
+  
+
 </div>
+</md-sidenav-container>
+
+
+<!--end container-->
 
 <!--
   <div  class="copm-back">
@@ -167,5 +176,11 @@
 
 <!--end model-->
 
+
+
+
+
+
+ 
 
 

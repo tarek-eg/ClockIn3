@@ -158,19 +158,52 @@ padding: 8px;
 
 
 .side-font{
-  font-size: 27px;
+  font-size: 24px;
   padding-left: 12px;
+  padding-top: 42px;
 
 }
 .employee-p{
-font-size: 19px;
-    padding-top: 19px;
+font-size: 17px;
+    padding-top: 8px;
     padding-left: 13px;
     margin-bottom: 0px;
 }
 .employee-p1 {
-font-size: 14px;
+font-size: 12px;
     padding-left: 13px;
+
+}
+/*
+side bar  start
+*/
+
+html, body, material-app, md-sidenav-container, 
+.my-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown{
+    background-color: transparent;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing{
+opacity: 0;
+}
+.mat-drawer {
+  transition: 0.7s;
+}
+md-sidenav {
+ width: 350px;
+}
+/*
+side bar  end
+*/
+
+.cdk-overlay-pane{
+margin-top: 36px;
 
 }
 
