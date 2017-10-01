@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { UsersService, TS } from '../shared/users.service';
 import { Router } from '@angular/router'
+import { ShiftService } from '../ServicesAPI/Shift.Service'
 var moment = require('moment');
 require('moment-precise-range-plugin');
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +12,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-time-sheet',
   templateUrl: './time-sheet.component.html',
   styles: [],
+  providers: [ShiftService]
 })
 export class TimeSheetComponent  {
   
@@ -30,14 +32,19 @@ export class TimeSheetComponent  {
   timeIn
   timeOut
   diffTimeSheet
-
+  shifts
   constructor(
     private usersService:UsersService, 
     private router:Router, 
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private shiftService: ShiftService
+
   ) { }
 
   ngOnInit() {
+    this.shiftService.getAllShifts().subscribe(res => this.shifts = res )
+    setTimeout(() => console.log(this.shifts),1000)
+
     this.xUser = "All"
     this.usersList = this.usersService.getUsers()
 
@@ -51,6 +58,9 @@ export class TimeSheetComponent  {
     
   }
 
+  // ngAfterViewInit(){
+
+  // }
 activateUser(user){
   if(user !== "All"){
   this.timeSheets = this.usersService.timeSheet

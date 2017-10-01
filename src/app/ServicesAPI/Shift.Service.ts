@@ -13,7 +13,7 @@ import {Shift} from './Shift';
 export class ShiftService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private ShiftsUrl ='http://cyclockapi.mbde3on.com/api/Shift/';//'api/groups';  // URL to web api
+  private ShiftsUrl ='http://cyclockapi.mbde3on.com/api/shift/';//'api/groups';  // URL to web api
   private ShiftsUrlAdd = this.ShiftsUrl + 'AddShift'; 
   private ShiftsUrlEdit =this.ShiftsUrl + 'EditShift';
   private ShiftsUrlDelete =this.ShiftsUrl + 'DeleteShift';
@@ -24,6 +24,11 @@ constructor(private _http : Http){
  
 }
 
+getAllShifts():Observable<any>{
+  return  this._http.get(this.ShiftsUrl)
+    .map(res => res.json())
+    .catch(this.handleError); 
+}
 
 AddShift(shift:Shift){
   var headers = new Headers();
@@ -56,6 +61,21 @@ DeleteShift(id:number){
  .subscribe((ok)=>{console.log(ok)});
 }
 
+
+
+/* Handle errors Tarek*/
+private handleError(err){
+  let errMessage: string;
+
+  if (err instanceof Response){
+      let body = err.json() || '';
+      let error = body.error || JSON.stringify(body);
+      errMessage = `${err.status} - ${err.statusText || ''} ${error}`;
+  }else{
+      errMessage = err.message ? err.message : err.toString();
+  }
+  return Observable.throw(errMessage)
+}
 
 
 
