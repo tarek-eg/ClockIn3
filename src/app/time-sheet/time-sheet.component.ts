@@ -42,46 +42,51 @@ export class TimeSheetComponent  {
   ) { }
 
   ngOnInit() {
-    this.shiftService.getAllShifts().subscribe(res => this.shifts = res )
-    setTimeout(() => console.log(this.shifts),1000)
-
+    //filling the toolbar controls
     this.xUser = "All"
-    this.usersList = this.usersService.getUsers()
+    // this.usersList = this.usersService.getUsers()
+    this.usersList = [{"name": "Osama"}, {"name": "etert"}]
 
-    if (this.usersService.timeSheet.length == 0){
-      this.usersService.timeSheet = this.usersService.getTimesheets()
-      this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
-    }
-    this.timeSheets = this.usersService.timeSheet
-    
-    this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+    //retrieve all shifts from the service
+    this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res)
+    setTimeout(() => console.log(this.timeSheets), 3000)
+    //changing the timesheet layout to fit the initial view
+    setTimeout(() => this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate'),1000)
     
   }
 
-  // ngAfterViewInit(){
 
-  // }
+
 activateUser(user){
   if(user !== "All"){
-  this.timeSheets = this.usersService.timeSheet
-  this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+  // this.timeSheets = this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res)
+  // this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'ShiftDate')
 
   this.xDate = null
-  this.timeSheets = this.usersService.timeSheet.filter(res => res.username == user) 
-  this.diffTimeSheet =  separateDates(this.timeSheets, 'date')
+  this.timeSheets = this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res.filter(res => res.userName == user))
+  console.log(this.timeSheets)
+  console.log(this.diffTimeSheet)
+  setTimeout(() => this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate'), 1000)
+
   } else
   { this.ngOnInit()}
 }
+
 
 activateDate(date){
 
     this.xUser = "All"
     this.timeSheets = this.usersService.timeSheet
-    this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'date')
+    this.diffTimeSheet =  separateDates(this.usersService.timeSheet, 'ShiftDate')
     this.timeSheets = this.usersService.timeSheet.filter(res => moment(res.date).format() == moment(date).format()) 
-    this.diffTimeSheet =  separateDates(this.timeSheets, 'date')
+    this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate')
     } 
 
+calcDuration(timein, timeout){
+  console.log(timein)
+  console.log(timeout)
+  TotalDuration(timein, timeout)
+}
 
 clearAll(){
   this.xDate = null
@@ -164,11 +169,11 @@ toggle1() {
 }
 
 
-function Calc(y, x){
-  //return moment.utc(moment(x,"DD/MM/YYYY hh:mm").diff(moment(y,"DD/MM/YYYY hh:mm"))).format("hh:mm")
-  return moment.duration(moment(x).diff(moment(y)));
+// function Calc(y, x){
+//   //return moment.utc(moment(x,"DD/MM/YYYY hh:mm").diff(moment(y,"DD/MM/YYYY hh:mm"))).format("hh:mm")
+//   return moment.duration(moment(x).diff(moment(y)));
 
-}
+// }
 
 
 function TotalDuration(timein, timeout) {
@@ -180,7 +185,7 @@ function separateDates(array, propertyName) {
   let newTSV = []
   let xArr = array.filter((e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i)
   for(let x of xArr){
-    newTSV.push(new TimesheetView(x.date, array.filter(res => res.date == x.date)))
+    newTSV.push(new TimesheetView(x.ShiftDate, array.filter(res => res.ShiftDate == x.ShiftDate)))
   }
   return newTSV
   }

@@ -115,15 +115,15 @@
           <td>
             <div>
               <span><span class="glyphicon glyphicon-user" style="color: #CC66CC;padding-right: 11px;">
-                </span></span> {{shift.username }}
+                </span></span> {{shift.userName }}
             </div>
           </td>
-          <td>{{ shift.timein | date:'HH:mm' }}</td>
-          <td *ngIf="shift.timeout"> {{shift.timeout | date:'HH:mm' }}</td>
-          <td *ngIf="!shift.timeout"><button (click)="endShiftNow(shift)">End shift</button>
+          <td>{{ shift.FromDate | date:'HH:mm' }}</td>
+          <td *ngIf="shift.ToDate"> {{shift.ToDate | date:'HH:mm' }}</td>
+          <td *ngIf="!shift.ToDate"><button (click)="endShiftNow(shift)">End shift</button>
             <td>
-              <td> {{ shift.date | date: fullDate}} </td>
-              <td> {{ shift.total }}</td>
+              <td> {{ shift.ShiftDate | date: fullDate}} </td>
+              <td> {{ calcDuration(shift.FromDate, shift.ToDate)}}</td>
               <td><button (click)="EditRef(shift)">Edit</button> </td>
               <td><button type="button" (click)="open(content)">Delete</button> </td>
         </tr>
