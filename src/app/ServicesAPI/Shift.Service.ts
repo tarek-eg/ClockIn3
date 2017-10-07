@@ -34,9 +34,9 @@ AddShift(shift:Shift){
   var headers = new Headers();
   headers.append('Content-Type', 'application/json');
   this._http.post(this.ShiftsUrlAdd, 
-                         JSON.stringify({EndTime:shift.EndTime , IsDeleted:shift.IsDeleted ,
-                          ShiftDate:shift.ShiftDate ,ShiftPeriodMin:shift.ShiftPeriodMin ,
-                          StartTime:shift.StartTime ,UserID :shift.UserID }),
+                         JSON.stringify({EndTime:shift.ToDate , IsDeleted:shift.IsDeleted ,
+                          ShiftDate:shift.ShiftDate ,ShiftPeriodMin:shift.ShiftTotal ,
+                          StartTime:shift.FromDate ,UserID :shift.UserID }),
                          {headers:headers})
   .map((res: Response) => res.json())
   .subscribe((res:Shift) => { this.postResponse = res; console.log(res); });

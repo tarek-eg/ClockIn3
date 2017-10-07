@@ -49,7 +49,7 @@ export class TimeSheetComponent  {
 
     //retrieve all shifts from the service
     this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res)
-    setTimeout(() => console.log(this.timeSheets), 3000)
+    // setTimeout(() => console.log(this.timeSheets), 3000)
     //changing the timesheet layout to fit the initial view
     setTimeout(() => this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate'),1000)
     
@@ -64,8 +64,6 @@ activateUser(user){
 
   this.xDate = null
   this.timeSheets = this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res.filter(res => res.userName == user))
-  console.log(this.timeSheets)
-  console.log(this.diffTimeSheet)
   setTimeout(() => this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate'), 1000)
 
   } else
@@ -83,8 +81,6 @@ activateDate(date){
     } 
 
 calcDuration(timein, timeout){
-  console.log(timein)
-  console.log(timeout)
   TotalDuration(timein, timeout)
 }
 
