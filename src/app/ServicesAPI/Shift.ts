@@ -3,6 +3,7 @@ export class Shift {
  public GroupID?: number ,
  public GroupName?:string,
  public UserID?: number,
+ public ShiftID?: number,
  public userName?: string,
  public ShiftDate?: Date,
  public FromDate?: Date,

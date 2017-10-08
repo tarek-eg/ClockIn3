@@ -125,8 +125,10 @@
               <td> {{ shift.ShiftDate | date: fullDate}} </td>
               <td> {{ calcDuration(shift.FromDate, shift.ToDate)}}</td>
               <td><button (click)="EditRef(shift)">Edit</button> </td>
-              <td><button type="button" (click)="open(content)">Delete</button> </td>
-        </tr>
+              <!-- <td><button type="button" (click)="open(content)">Delete</button> </td> -->
+              <td><button type="button" (click)="deleteShift(shift.ShiftID)">Delete</button> </td>           
+       
+            </tr>
       </tbody>
     </table>
   </section>

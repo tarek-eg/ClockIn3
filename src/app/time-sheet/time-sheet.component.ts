@@ -45,11 +45,10 @@ export class TimeSheetComponent  {
     //filling the toolbar controls
     this.xUser = "All"
     // this.usersList = this.usersService.getUsers()
-    this.usersList = [{"name": "Osama"}, {"name": "etert"}]
-
+    this.usersList = this.usersService.getUsers()
+    setTimeout(() => this.shiftService.getAllShifts().subscribe(res => console.log(res)), 3000)
     //retrieve all shifts from the service
     this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res)
-    // setTimeout(() => console.log(this.timeSheets), 3000)
     //changing the timesheet layout to fit the initial view
     setTimeout(() => this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate'),1000)
     
@@ -144,6 +143,8 @@ onEditCancel(){
   }
 
 
+
+
   setStyle1() {
   let styles = {
    'width.px': this.some2 ? '0' : '300',
@@ -157,8 +158,9 @@ toggle1() {
    
 
   
-  deleteShift(){
-    
+  deleteShift(shiftID){
+    console.log(shiftID)
+    this.shiftService.DeleteShift(shiftID)
   }
 
 
