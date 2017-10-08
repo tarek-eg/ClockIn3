@@ -31,7 +31,7 @@ export class AddShiftComponent implements OnInit {
    }
 
    AddShift(user, timein , timeout){
-    let shift = new Shift(1,"Cyclers", 5, user, timein, timein, timeout, "hour", false)
+    let shift = new Shift(1,"Cyclers", 5, null ,user, timein, timein, timeout, "hour", false)
     // this.shift.push(new Shift(1,"Cyclers", 5, user, timein, timein, timeout, "hour", false))
     this.usersService.timeSheet.push(new TS(user, timein, timein, timeout, TotalDuration(timein,timeout)))
     // this.emitterService.closeSidebar()
