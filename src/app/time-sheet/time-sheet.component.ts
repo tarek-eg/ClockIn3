@@ -48,7 +48,7 @@ export class TimeSheetComponent  {
     this.usersList = this.usersService.getUsers()
     setTimeout(() => this.shiftService.getAllShifts().subscribe(res => console.log(res)), 3000)
     //retrieve all shifts from the service
-    this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res)
+    this.shiftService.getAllShifts().subscribe(res => this.timeSheets = res.filter(res => res.IsDeleted == false))
     //changing the timesheet layout to fit the initial view
     setTimeout(() => this.diffTimeSheet =  separateDates(this.timeSheets, 'ShiftDate'),1000)
     
